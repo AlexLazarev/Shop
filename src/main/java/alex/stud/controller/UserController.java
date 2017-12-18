@@ -16,7 +16,7 @@ public class UserController {
 
     @GetMapping("/customers")
     public String getAllUsers(Model model){
-        model.addAttribute("customers",customerService.findAll());
+        model.addAttribute("customers",customerService.getAll());
         return "customers";
     }
 
@@ -26,16 +26,34 @@ public class UserController {
         return "showCustomer";
     }
 
-
+    ///////////
     @GetMapping("/")
-    public String index(){
-        return "index";
+    public String start(){
+        return "main";
     }
 
-    @GetMapping("/hello")
-    public String Hello(){
-        return "hello";
+    @GetMapping("/main")
+    public String main(){
+        return "main";
     }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin-panel";
+    }
+
+    @GetMapping("/shop")
+    public String shop(){
+        return "shop";
+    }
+
+    @GetMapping("/register")
+    public String register(){
+        return "register";
+    }
+
+
+    //////////////
 
     @GetMapping("/addCustomer")
     public String createCustomer(){

@@ -1,11 +1,13 @@
 package alex.stud.dao;
 
+import alex.stud.dao.interfaces.CustomerDao;
 import alex.stud.entity.Customer;
 import alex.stud.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -14,12 +16,10 @@ public class CustomerDaoImpl implements CustomerDao {
     @Autowired //объект описан ранее
     public JdbcTemplate jdbcTemplate;
 
-
-    public List<Customer> findAll() {
-        String sql = "Select* From Customer";
-
-        return jdbcTemplate.query(sql,new CustomerMapper());
-    }
+    public List<Customer> getAll() {
+            String sql = "Select* From Customer";
+            return jdbcTemplate.query(sql,new CustomerMapper());
+        }
 
     public void save(Customer customer) {
         String sql = "INSERT INTO Customer (id,firstName,email) VALUE (?,?,?)";

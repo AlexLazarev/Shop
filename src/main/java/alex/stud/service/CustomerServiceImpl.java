@@ -1,6 +1,6 @@
 package alex.stud.service;
 
-import alex.stud.dao.CustomerDao;
+import alex.stud.dao.interfaces.CustomerDao;
 import alex.stud.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     public CustomerDao customerDao;
 
-    public List<Customer> findAll() {
-        return customerDao.findAll();
+    public List<Customer> getAll() {
+        return customerDao.getAll();
     }
 
     public void save(Customer customer) {

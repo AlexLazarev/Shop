@@ -5,7 +5,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
@@ -14,23 +18,29 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 @ComponentScan(basePackages = "alex.stud.controller")
 public class  WebConfig extends WebMvcConfigurerAdapter{
 
-
     @Bean
-    public ViewResolver getViewResolver() {
-        FreeMarkerViewResolver marker = new FreeMarkerViewResolver();
-        marker.setOrder(1); //порядок загрузки
-        marker.setSuffix(".ftl");
+    public ViewResolver internalResourceViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/pages/");
+        bean.setSuffix(".jsp");
+        return bean;
 
-        return marker;
     }
 
     @Bean
-    public FreeMarkerConfigurer getFreeMarkerConfigurer(){
-        FreeMarkerConfigurer marker = new FreeMarkerConfigurer();
-        marker.setTemplateLoaderPaths("/","/WEB-INF/views/");
-
-        return marker;
+    public ViewResolver resourceBundleViewResolver() {
+        ResourceBundleViewResolver bean = new ResourceBundleViewResolver();
+        bean.setBasename("views");
+        return bean;
     }
 
-
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
+    }
 }
+
+

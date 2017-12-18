@@ -1,9 +1,5 @@
 package alex.stud.config;
 
-import alex.stud.dao.CustomerDao;
-import alex.stud.dao.CustomerDaoImpl;
-import alex.stud.service.CustomerService;
-import alex.stud.service.CustomerServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +36,4 @@ public class SpringConfig {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
     }
-
-
 }
