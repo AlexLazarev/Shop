@@ -4,14 +4,14 @@ import alex.stud.dao.interfaces.CustomerDao;
 import alex.stud.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import alex.stud.service.interfaces.CustomerService;
 import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    public CustomerDao customerDao;
+    private CustomerDao customerDao;
 
     public List<Customer> getAll() {
         return customerDao.getAll();

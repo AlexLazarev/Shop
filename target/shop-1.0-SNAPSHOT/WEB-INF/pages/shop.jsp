@@ -24,7 +24,7 @@
                 <ul class="header-navlist">
                     <li class="header-navlist__item"><a class="header-navlist__link" href="main">Главная</a></li>
                     <li class="header-navlist__item"><a class="header-navlist__link" href="shop">Магазин</a></li>
-                    <li class="header-navlist__item"><a class="header-navlist__link" href="sale.html">Распродажа</a></li>
+                    <li class="header-navlist__item"><a class="header-navlist__link" href="#">Распродажа</a></li>
                     <li class="header-navlist__item"><a class="header-navlist__link" href="#">Помощь покупателям</a></li>
                     <li class="header-navlist__item"><a class="header-navlist__link" href="#">Адреса</a></li>
                 </ul>
@@ -56,17 +56,18 @@
             </div>
             <div class="recyclebin-info">
                 <div class="recyclebin-info_box">
+                    <c:forEach items="${shoppingCart}" var="product">
                     <div class="recyclebin-info_box__img">
                         <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
                     </div>
-                    <div class="recyclebin-info_box__info">
-                        <p class="recyclebin-title">Юбка миди</p>
-                        <p class="recyclebin-text">Количество: 1</p>
-                        <p class="recyclebin-text">1999 грн.</p>
-                    </div>
-                    <a href="#" class="recyclebin-info_box__btn">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
+                        <div class="recyclebin-info_box__info">
+                            <p class="recyclebin-title"><c:out value="${product.name}"/></p>
+                            <p class="recyclebin-text"><c:out value="${product.price}"/> грн.</p>
+                        </div>
+                        <a href="#" class="recyclebin-info_box__btn">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </c:forEach>
                 </div>
             </div>
             <div class="recyclebin-sum">
@@ -86,14 +87,16 @@
                         <h4 class="bold-title">Магазин</h4>
                     </div>
                     <div class="shop-goods__allGoods">
+                        <c:forEach items="${products}" var="product">
                         <div class="shop-goods__item">
-                            <div class="shop-goods__img"><a href="selected_goods.jsp"></a></div>
+                            <a href="selected/${product.id}"><div class="shop-goods__img"></div></a>
                             <div class="shop-goods__link">
-                                <a href="selected_goods.jsp"></a>
-                                <p class="shop-goods__text">Юбка миди</p>
-                                <p class="shop-goods__text">1999 грн.</p>
+                                <a href="selected.jsp"></a>
+                                <p class="shop-goods__text"><c:out value="${product.name}"/></p>
+                                <p class="shop-goods__text"><c:out value="${product.price}"/> грн.</p>
                             </div>
                         </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

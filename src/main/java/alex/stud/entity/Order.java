@@ -4,22 +4,23 @@ import java.util.List;
 
 public class Order {
 
-    private long id;
-    private List<ProductInOrder> productInOrders;
+    private int id;
+    private int idCustomer;
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public List<ProductInOrder> getProductInOrders() {
-        return productInOrders;
+
+    public int getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setProductInOrders(List<ProductInOrder> productInOrders) {
-        this.productInOrders = productInOrders;
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 }

@@ -1,11 +1,13 @@
 package alex.stud.entity;
 
+
 public class Customer {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String number;
+    private String password;
     
     public String getlastName() {
         return lastName;
@@ -45,5 +47,13 @@ public class Customer {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

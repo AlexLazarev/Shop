@@ -22,8 +22,8 @@ public class CustomerDaoImpl implements CustomerDao {
         }
 
     public void save(Customer customer) {
-        String sql = "INSERT INTO Customer (id,firstName,email) VALUE (?,?,?)";
-        jdbcTemplate.update(sql,customer.getId(),customer.getFirstName(),customer.getEmail());
+        String sql = "INSERT INTO Customer (firstName,lastName,email,password) VALUES (?,?,?,?)";
+        jdbcTemplate.update(sql, customer.getFirstName(),customer.getlastName(), customer.getEmail(),customer.getPassword());
     }
 
     public Customer getById(int id){

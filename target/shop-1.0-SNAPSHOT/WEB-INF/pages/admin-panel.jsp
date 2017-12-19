@@ -61,13 +61,11 @@
                             <p class="register-body__text big-padding">Вы можете добавить товар с помощью данных полей</p>
                         </div>
                         <div class="register-body__form">
-                            <form action="#">
-                                <p class="register-body__text">ID товара</p>
-                                <input class="register-body__input" type="text">
-                                <p class="register-body__text">Имя товара</p>
-                                <input class="register-body__input" type="text">
-                                <p class="register-body__text">Описание</p>
-                                <input class="register-body__input" type="password">
+                            <form action="/addProduct" method="post">
+                                <p class="register-body__text">Название</p>
+                                <input class="register-body__input" type="text" name="name">
+                                <p class="register-body__text">Цена</p>
+                                <input class="register-body__input" type="text" name="price">
                                 <input type="submit" value="Добавить товар">
                             </form>
                         </div>

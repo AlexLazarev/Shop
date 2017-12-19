@@ -9,7 +9,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages = {"alex.stud.dao","alex.stud.service"})
+@ComponentScan(basePackages = {"alex.stud.dao","alex.stud.service","alex.stud.entity"})
 public class SpringConfig {
 
     /*@Bean

@@ -1,14 +1,11 @@
 package alex.stud.entity;
 
 
-import java.util.List;
-
 public class Product {
 
     private long id;
     private String name;
     private int price;
-    private List<ProductInOrder> productInOrders;
 
     public long getId() {
         return id;
@@ -34,11 +31,4 @@ public class Product {
         this.price = price;
     }
 
-    public List<ProductInOrder> getProductInOrders() {
-        return productInOrders;
-    }
-
-    public void setProductInOrders(List<ProductInOrder> productInOrders) {
-        this.productInOrders = productInOrders;
-    }
 }

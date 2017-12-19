@@ -22,7 +22,7 @@
                 <ul class="header-navlist">
                     <li class="header-navlist__item"><a class="header-navlist__link" href="main">Главная</a></li>
                     <li class="header-navlist__item"><a class="header-navlist__link" href="shop">Магазин</a></li>
-                    <li class="header-navlist__item"><a class="header-navlist__link" href="#">Распродажа</a></li>
+                    <li class="header-navlist__item"><a class="header-navlist__link" href="selected">Распродажа</a></li>
                     <li class="header-navlist__item"><a class="header-navlist__link" href="#">Помощь покупателям</a></li>
                     <li class="header-navlist__item"><a class="header-navlist__link" href="#">Адреса</a></li>
                 </ul>
@@ -50,20 +50,22 @@
         <div class="recyclebin">
             <div class="recyclebin-header">
                 <h3 class="recyclebin-header_title">Корзина</h3>
-                <i class="recyclebin-header__back fa fa-angle-right fa-2x" aria-hidden="true"></i>
+                <i class="recyclebin-header__back fa fa-angle-right fa-lg" aria-hidden="true"></i>
             </div>
             <div class="recyclebin-info">
                 <div class="recyclebin-info_box">
-                    <div class="recyclebin-info_box__img">
-                        <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
-                    </div>
-                    <div class="recyclebin-info_box__info">
-                        <p class="recyclebin-title">Юбка миди</p>
-                        <p class="recyclebin-text">Количество: 1</p>
-                        <p class="recyclebin-text">1999 грн.</p>
-                    </div>
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
+                    <c:forEach items="${productInOrder}" var="product">
+                        <div class="recyclebin-info_box__img">
+                            <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
+                        </div>
+                        <div class="recyclebin-info_box__info">
+                            <p class="recyclebin-title"><c:out value="${product.name}"/></p>
+                            <p class="recyclebin-text"><c:out value="${product.price}"/> грн.</p>
+                        </div>
+                        <a href="#" class="recyclebin-info_box__btn">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </c:forEach>
                 </div>
             </div>
             <div class="recyclebin-sum">

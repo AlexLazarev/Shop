@@ -92,13 +92,15 @@
                             <i class="register-body__link fa fa-google fa-lg" aria-hidden="true"></i>
                         </div>
                         <div class="register-body__form">
-                            <form action="#">
+                            <form name="Register" action="/register" method="post">
                                 <p class="register-body__text">Ваше имя</p>
-                                <input class="register-body__input" type="text">
+                                <input class="register-body__input" type="text" name="firstName">
+                                <p class="register-body__text">Ваше фамилия</p>
+                                <input class="register-body__input" type="text" name="lastName">
                                 <p class="register-body__text">Эл. почта или телефон</p>
-                                <input class="register-body__input" type="text">
+                                <input class="register-body__input" type="text" name="email">
                                 <p class="register-body__text">Придумайте пароль</p>
-                                <input class="register-body__input" type="password">
+                                <input class="register-body__input" type="password" name="password">
                                 <input type="submit" value="Зарегистрироваться">
                             </form>
                         </div>

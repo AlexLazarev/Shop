@@ -1,4 +1,10 @@
 package alex.stud.dao.interfaces;
 
-public interface ProductInOrderDao extends IDAO<ProductInOrderDao> {
+import alex.stud.entity.Product;
+import alex.stud.entity.ProductInOrder;
+
+import java.util.List;
+
+public interface ProductInOrderDao extends IDAO<ProductInOrder> {
+    List<Product> getProductByIdOrder(int id);
 }

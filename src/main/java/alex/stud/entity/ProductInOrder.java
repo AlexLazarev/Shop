@@ -1,30 +1,26 @@
 package alex.stud.entity;
 
 
-import java.util.List;
-
 public class ProductInOrder {
 
-    private long id;
-    private Order order;
-    private Product product;
+    private int idProduct;
+    private int idOrder;
     private int quantity;
 
-
-    public long getId() {
-        return id;
+    public int getIdProduct() {
+        return idProduct;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public Order getOrder() {
-        return order;
+    public int getIdOrder() {
+        return idOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
     }
 
     public int getQuantity() {
@@ -34,14 +30,4 @@ public class ProductInOrder {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-
 }
