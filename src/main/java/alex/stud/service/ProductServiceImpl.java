@@ -1,10 +1,7 @@
 package alex.stud.service;
 
-import alex.stud.dao.interfaces.CustomerDao;
-import alex.stud.dao.interfaces.ProductDao;
-import alex.stud.entity.Customer;
+import alex.stud.daoTest.ProductRepository;
 import alex.stud.entity.Product;
-import alex.stud.entity.ShoppingCart;
 import alex.stud.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,26 +13,26 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductDao productDao;
+    private ProductRepository productRepository;
 
    public List<Product> getAll() {
-        return productDao.getAll();
+        return productRepository.findAll();
     }
 
     public void save(Product product) {
-        productDao.save(product);
+        productRepository.save(product);
     }
 
     public Product getById(int id) {
-        return productDao.getById(id);
+        return productRepository.findOne(id);
     }
 
     public void update(Product product) {
-        productDao.update(product);
+        //productRepository.(product);
     }
 
     public void deleteById(int id) {
-        productDao.deleteById(id);
+        productRepository.delete(id);
     }
 
 

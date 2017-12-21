@@ -1,14 +1,15 @@
 package alex.stud.entity;
 
-
 public class Customer {
+
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String number;
     private String password;
-    
+
+
     public String getlastName() {
         return lastName;
     }

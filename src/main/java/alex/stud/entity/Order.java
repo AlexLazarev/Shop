@@ -1,14 +1,25 @@
 package alex.stud.entity;
 
+import javax.persistence.*;
 import java.util.List;
+
 
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int idCustomer;
     private String city;
     private String delivery;
     private String payment;
+
+    //fetch - get
+    //to load it together with the rest of the fields (i.e. eagerly) or
+    //to load it on-demand (i.e. lazily) when you call the product's getProduct() method.
+    //DEFAULT - LAZY
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<ProductInOrder> productInOrders;
 
     public long getId() {
         return id;
@@ -49,5 +60,13 @@ public class Order {
 
     public void setPayment(String payment) {
         this.payment = payment;
+    }
+
+    public List<ProductInOrder> getProductInOrders() {
+        return productInOrders;
+    }
+
+    public void setProductInOrders(List<ProductInOrder> productInOrders) {
+        this.productInOrders = productInOrders;
     }
 }

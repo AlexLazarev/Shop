@@ -16,8 +16,8 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     //Productservice
-    @Autowired
-    private ProductDao productDao;
+    //@Autowired
+    //private ProductDao productDao;
 
     @Autowired
     private OrderDao orderDao;
@@ -33,7 +33,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public List<Product> getProductsInOrder(int id){
-        return productDao.getProductByIdOrder(id);
+        return null;
+        //productDao.getProductByIdOrder(id);
     }
 
 }

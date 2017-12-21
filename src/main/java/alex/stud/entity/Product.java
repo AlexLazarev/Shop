@@ -1,11 +1,16 @@
 package alex.stud.entity;
 
+import javax.persistence.*;
 
-public class Product {
+@Entity
+public class Product{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private int price;
+
 
     public String getName() {
         return name;
