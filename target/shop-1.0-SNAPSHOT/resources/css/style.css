@@ -45,7 +45,7 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .header-logo__text { line-height: 30px; }
 .header-logo a { line-height: inherit; font-size: 20px; font-weight: bold; letter-spacing: 0.3em; text-transform: uppercase; text-decoration: none; color: #D3D3D3; }
 
-.header-navlist { list-style: none; width: 832px; text-align: center; }
+.header-navlist { list-style: none; width: 826px; text-align: center; }
 .header-navlist__item { display: inline-block; }
 .header-navlist__link { display: block; text-decoration: none; padding: 0 27px; color: #D3D3D3; font-size: 15px; line-height: 30px; }
 .header-navlist__link.active { color: #ffffff; }

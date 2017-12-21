@@ -8,6 +8,4 @@ import java.util.List;
 public interface OrderService {
     void save(Order order);
     void deleteById(int id);
-    List<Product> getProductsInOrder(int id);
-
 }

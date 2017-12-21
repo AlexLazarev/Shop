@@ -55,17 +55,18 @@
             </div>
             <div class="recyclebin-info">
                 <div class="recyclebin-info_box">
-                    <div class="recyclebin-info_box__img">
-                        <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
-                    </div>
-                    <div class="recyclebin-info_box__info">
-                        <p class="recyclebin-title">Юбка миди</p>
-                        <p class="recyclebin-text">Количество: 1</p>
-                        <p class="recyclebin-text">1999 грн.</p>
-                    </div>
-                    <a href="#" class="recyclebin-info_box__btn">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
+                    <c:forEach items="${shoppingCart}" var="product">
+                        <div class="recyclebin-info_box__img">
+                            <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
+                        </div>
+                        <div class="recyclebin-info_box__info">
+                            <p class="recyclebin-title">${product.name}</p>
+                            <p class="recyclebin-text">${product.price} грн.</p>
+                        </div>
+                        <a href="#" class="recyclebin-info_box__btn">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </c:forEach>
                 </div>
             </div>
             <div class="recyclebin-sum">

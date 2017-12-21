@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<<html lang="ru">
+<html lang="ru">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <title>test</title>
+
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/font-awesome/css/font-awesome.css" />" rel="stylesheet">
 
@@ -53,8 +54,8 @@
                 <i class="recyclebin-header__back fa fa-angle-right fa-lg" aria-hidden="true"></i>
             </div>
             <div class="recyclebin-info">
-                <div class="recyclebin-info_box">
-                    <c:forEach items="${productInOrder}" var="product">
+                <c:forEach items="${shoppingCart}" var="product">
+                    <div class="recyclebin-info_box">
                         <div class="recyclebin-info_box__img">
                             <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
                         </div>
@@ -65,13 +66,13 @@
                         <a href="#" class="recyclebin-info_box__btn">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </a>
-                    </c:forEach>
-                </div>
+                    </div>
+                </c:forEach>
             </div>
             <div class="recyclebin-sum">
                 <div class="recyclebin-sum">
                     <p class="recyclebin-sum_text">Сумма</p>
-                    <p class="recyclebin-sum_text">1999 грн.</p>
+                    <p class="recyclebin-sum_text">${sum}</p>
                 </div>
             </div>
             <div class='recyclebin-footer rb-border'>

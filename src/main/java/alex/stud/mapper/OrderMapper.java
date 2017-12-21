@@ -12,6 +12,9 @@ import java.sql.SQLException;
                 Order order=new Order();
                 order.setId(resultSet.getInt("id"));
                 order.setIdCustomer(resultSet.getInt("id_customer"));
+                order.setCity(resultSet.getString("city"));
+                order.setDelivery(resultSet.getString("delivery"));
+                order.setPayment(resultSet.getString("payment"));
                 return order;
                 }
     }

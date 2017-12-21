@@ -22,8 +22,10 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     public void save(Order order) {
-        String sql = "INSERT INTO Orders (id_customer) VALUES (?)";
-        jdbcTemplate.update(sql, order.getIdCustomer());
+        ///BUDLO-CODE ONE LOVE
+
+        String sql = "INSERT INTO Orders (id_customer, city, delivery, payment) VALUES ((SELECT MAX(id) FROM  Customer),?,?,?)";
+        jdbcTemplate.update(sql, order.getCity(),order.getDelivery(),order.getPayment());
     }
 
     public Order getById(int id){

@@ -1,8 +1,8 @@
 package alex.stud.controller;
 
 import alex.stud.entity.Customer;
+import alex.stud.entity.OrderCustomer;
 import alex.stud.entity.Product;
-import alex.stud.entity.ShoppingCart;
 import alex.stud.service.interfaces.CustomerService;
 import alex.stud.service.interfaces.OrderService;
 import alex.stud.service.interfaces.ProductService;
@@ -47,7 +47,7 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public String addCustomer(@ModelAttribute("")Customer customer){ //@ModelAttribute("customer")
+    public String addCustomer(@ModelAttribute Customer customer){ //@ModelAttribute("customer")
         customerService.save(customer);
         return "redirect:/main";
     }
@@ -58,7 +58,8 @@ public class UserController {
     }
 
     @GetMapping("/main")
-    public String main(){
+    public String main(Model model){
+        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
         return "main";
     }
 
@@ -70,6 +71,8 @@ public class UserController {
     @GetMapping("/selected/{id}")
     public String selectedID(@PathVariable("id") int id, Model model){
         model.addAttribute("product",productService.getById(id));
+        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("sum",shoppingCart.getResultPrice());
         return "selected";
     }
 
@@ -95,17 +98,31 @@ public class UserController {
     public String shop(Model model){
         model.addAttribute("products", productService.getAll());
         model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("sum",shoppingCart.getResultPrice());
         return "shop";
     }
 
+
+
+
     @GetMapping("/register")
-    public String register(){
+    public String register(Model model){
+        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
         return "register";
     }
 
-    @GetMapping("/selected")
-    public String selected(){
-        return "selected";
+    @GetMapping("/checkout")
+    public String checkout(Model model){
+        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("sum",shoppingCart.getResultPrice());
+        return  "checkout";
+    }
+
+    @PostMapping("/makeOrder")
+    public String makeOrder(@ModelAttribute("")OrderCustomer orderCustomer){
+        customerService.save(orderCustomer.getCustomer());
+        orderService.save(orderCustomer.getOrder());
+        return "redirect:/main";
     }
 
 

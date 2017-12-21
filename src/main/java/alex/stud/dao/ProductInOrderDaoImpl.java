@@ -29,7 +29,8 @@ public class ProductInOrderDaoImpl implements ProductInOrderDao{
     }
 
     public void save(ProductInOrder entity) {
-
+        String sql = "INSERT INTO Product (name,price) VALUES (?,?)";
+        jdbcTemplate.update(sql,entity.getIdOrder(),entity.getIdProduct(),entity.getQuantity());
     }
 
     public ProductInOrder getById(int id) {

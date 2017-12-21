@@ -3,17 +3,9 @@ package alex.stud.entity;
 
 public class Product {
 
-    private long id;
+    private int id;
     private String name;
     private int price;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -31,4 +23,11 @@ public class Product {
         this.price = price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

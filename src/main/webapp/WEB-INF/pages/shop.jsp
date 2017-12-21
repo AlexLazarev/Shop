@@ -6,10 +6,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <title>test</title>
-
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/font-awesome/css/font-awesome.css" />" rel="stylesheet">
-
 </head>
 <body>
 
@@ -46,7 +44,7 @@
                     <input class="header-accwindow__btn" type="submit" value="Войти">
                     <a class="header-accwindow__close" href="#">Отмена</a>
                 </form>
-                <a class="header-accwindow__reg" href="register.jsp">Зарегистрироваться</a>
+                <a class="header-accwindow__reg" href="register">Зарегистрироваться</a>
             </div>
         </header>
         <div class="recyclebin">
@@ -55,29 +53,29 @@
                 <i class="recyclebin-header__back fa fa-angle-right fa-2x" aria-hidden="true"></i>
             </div>
             <div class="recyclebin-info">
-                <div class="recyclebin-info_box">
                     <c:forEach items="${shoppingCart}" var="product">
+                        <div class="recyclebin-info_box">
                     <div class="recyclebin-info_box__img">
                         <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
                     </div>
                         <div class="recyclebin-info_box__info">
-                            <p class="recyclebin-title"><c:out value="${product.name}"/></p>
+                              <p class="recyclebin-title"><c:out value="${product.name}"/></p>
                             <p class="recyclebin-text"><c:out value="${product.price}"/> грн.</p>
                         </div>
                         <a href="#" class="recyclebin-info_box__btn">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </a>
+                        </div>
                     </c:forEach>
-                </div>
             </div>
             <div class="recyclebin-sum">
                 <div class="recyclebin-sum">
                     <p class="recyclebin-sum_text">Сумма</p>
-                    <p class="recyclebin-sum_text">1999 грн.</p>
+                    <p class="recyclebin-sum_text">${sum}</p>
                 </div>
             </div>
             <div class='recyclebin-footer rb-border'>
-                <a href="#" class="recyclebin-footer_btn">Перейти в корзину</a>
+                <a href="checkout" class="recyclebin-footer_btn">Заказать</a>
             </div>
         </div>
         <div class="content">
@@ -91,9 +89,8 @@
                         <div class="shop-goods__item">
                             <a href="selected/${product.id}"><div class="shop-goods__img"></div></a>
                             <div class="shop-goods__link">
-                                <a href="selected.jsp"></a>
-                                <p class="shop-goods__text"><c:out value="${product.name}"/></p>
-                                <p class="shop-goods__text"><c:out value="${product.price}"/> грн.</p>
+                                <p class="shop-goods__text">${product.name}</p>
+                                <p class="shop-goods__text">${product.price} грн.</p>
                             </div>
                         </div>
                         </c:forEach>
@@ -138,9 +135,7 @@
             </div>
         </footer>
     </div>
-
     <script type="text/javascript" src="<c:url value="/resources/js/jquery.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/script.js"/>"></script>
-
 </body>
 </html>

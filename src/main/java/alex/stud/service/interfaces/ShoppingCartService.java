@@ -7,4 +7,6 @@ import java.util.List;
 public interface ShoppingCartService {
     void addProduct(Product product);
     List<Product> getAllProducts();
+    int getResultPrice();
+    void createProductInOrder();
 }

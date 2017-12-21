@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ShoppingCart {
 
@@ -15,4 +16,6 @@ public interface ShoppingCart {
     public List<Product> getAllProducts();
 
     public void addProduct(Product product);
+
+    public Map<Product,Integer> getProducts();
 }

@@ -1,11 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <title>test</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/font-awesome/css/font-awesome.css" />" rel="stylesheet">
 </head>
 <body>
 
@@ -51,19 +53,20 @@
                 <i class="recyclebin-header__back fa fa-angle-right fa-2x" aria-hidden="true"></i>
             </div>
             <div class="recyclebin-info">
-                <div class="recyclebin-info_box">
-                    <div class="recyclebin-info_box__img">
-                        <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
+                <c:forEach items="${shoppingCart}" var="product">
+                    <div class="recyclebin-info_box">
+                        <div class="recyclebin-info_box__img">
+                            <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
+                        </div>
+                        <div class="recyclebin-info_box__info">
+                            <p class="recyclebin-title"><c:out value="${product.name}"/></p>
+                            <p class="recyclebin-text"><c:out value="${product.price}"/> грн.</p>
+                        </div>
+                        <a href="#" class="recyclebin-info_box__btn">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
                     </div>
-                    <div class="recyclebin-info_box__info">
-                        <p class="recyclebin-title">Юбка миди</p>
-                        <p class="recyclebin-text">Количество: 1</p>
-                        <p class="recyclebin-text">1999 грн.</p>
-                    </div>
-                    <a href="#" class="recyclebin-info_box__btn">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                </c:forEach>
             </div>
             <div class="recyclebin-sum">
                 <div class="recyclebin-sum">
@@ -87,26 +90,28 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur et veniam vero!</p>
                         </div>
                         <div class="checkout-contact__form">
-                            <form action="#">
-                                <p class="checkout-contact__text">Имя и фамилия</p>
-                                <input class="checkout-contact__input" type="text">
+                            <form action="/makeOrder" method="post">
+                                <p class="checkout-contact__text">Имя</p>
+                                <input class="checkout-contact__input" type="text" name="firstName">
+                                <p class="checkout-contact__text">Фамилия</p>
+                                <input class="checkout-contact__input" type="text" name="lastName">
                                 <p class="checkout-contact__text">Город</p>
-                                <input class="checkout-contact__input" type="text">
-                                <p class="checkout-contact__text">Мобильный телефон</p>
-                                <input class="checkout-contact__input" type="text">
+                                <input class="checkout-contact__input" type="text" name="city">
+                                <p class="checkout-contact__text">email</p>
+                                <input class="checkout-contact__input" type="text" name="email">
                                 <p class="checkout-contact__text">Способ доставки</p>
-                                <select name="" class="checkout-contact__select">
-                                    <option value="">Самовывоз из Новой Почты</option>
-                                    <option value="">Курьер Новая Почта</option>
-                                    <option value="">Курьер Мист Экспресс</option>
+                                <select name="delivery" class="checkout-contact__select">
+                                    <option value="PickUp">Самовывоз из Новой Почты</option>
+                                    <option value="NEW MAIL">Курьер Новая Почта</option>
+                                    <option value="Курьер Мист Экспресс">Курьер Мист Экспресс</option>
                                 </select>
                                 <p class="checkout-contact__text">Способ оплаты</p>
-                                <select name="" class="checkout-contact__select">
-                                    <option value="">Наличными</option>
-                                    <option value="">Безналичными</option>
-                                    <option value="">Кредит</option>
-                                    <option value="">WebMoney</option>
+                                <select name="payment" class="checkout-contact__select">
+                                    <option value="Cash">Наличными</option>
+                                    <option value="Credit">Кредит</option>
+                                    <option value="WebMoney">WebMoney</option>
                                 </select>
+                                <input type="submit" value="Заказать">
                             </form>
                         </div>
                     </div>
@@ -122,30 +127,32 @@
                             </ul>
                         </div>
                         <div class="checkout-goods__body">
+                            <c:forEach items="${shoppingCart}" var="product">
                             <div class="checkout-goods__eachgoods">
                                 <div class="checkout-goods__info clearfix">
+
                                     <div class="checkout-goods__img">
                                         <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="">
                                     </div>
                                     <div class="checkout-goods__di">
-                                        <p>Ваш товар</p>
+                                        <p> ${product.name}</p>
                                         <p class="grey">Артикул: 0011</p>
                                         <a href="#">Удалить</a>
                                     </div>
                                     <ul class="checkout-goods__price">
-                                        <li><p>1444</p></li>
-                                        <li><input class="checkout-goods__input" type="text"></li>
-                                        <li><p>1444</p></li>
+                                        <li><p>${product.price}</p></li>
+                                        <li><input class="checkout-goods__input" value="1" type="text"></li>
+                                        <li><p>${product.price}</p></li>
                                     </ul>
                                 </div>
                             </div>
+                            </c:forEach>
                         </div>
                         <div class="checkout-goods__sum">
                             <div class="checkout-goods__total">
                                 <p>Сумма</p>
-                                <p>2998 грн.</p>
+                                <p>${sum}</p>
                             </div>
-                            <button class="checkout-goods__btn">Подтверждение заказа</button>
                         </div>
                     </div>
                 </div>
@@ -189,7 +196,7 @@
         </footer>
     </div>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/script.js"/>"></script>
 </body>
 </html>

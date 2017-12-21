@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "alex.stud.controller")
-public class  WebConfig extends WebMvcConfigurerAdapter{
+public class    WebConfig extends WebMvcConfigurerAdapter{
 
     @Bean
     public ViewResolver internalResourceViewResolver() {
