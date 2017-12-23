@@ -1,8 +1,10 @@
 package alex.stud.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "JpaProduct")
 public class Product{
 
     @Id
@@ -10,6 +12,9 @@ public class Product{
     private int id;
     private String name;
     private int price;
+
+    @OneToMany(mappedBy = "product") //Одна вещь может находиться во многих заказах
+    private List<ProductInOrder> productInOrders;
 
 
     public String getName() {
@@ -34,5 +39,13 @@ public class Product{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<ProductInOrder> getProductInOrders() {
+        return productInOrders;
+    }
+
+    public void setProductInOrders(List<ProductInOrder> productInOrders) {
+        this.productInOrders = productInOrders;
     }
 }

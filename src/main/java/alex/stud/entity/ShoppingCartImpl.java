@@ -3,18 +3,14 @@ package alex.stud.entity;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
-@Scope("session")
 public class ShoppingCartImpl implements ShoppingCart {
     private int idUser;
-    private List<Product> products = new ArrayList<>();
 
-    private Map prod = new HashMap<Product,Integer>();
+    private Map products = new HashMap<Product,Integer>();
 
 
     public int getIdUser() {
@@ -25,18 +21,12 @@ public class ShoppingCartImpl implements ShoppingCart {
         this.idUser = idUser;
     }
 
-    public List<Product> getAllProducts(){
+    public Map<Product,Integer> getAllProducts(){
         return products;
     }
 
-    public void addProduct(Product product){
-        products.add(product);
+    public void addProduct(Product product,int quanity){
+        products.put(product,quanity);
     }
-
-    @Override
-    public Map<Product, Integer> getProducts() {
-        return prod;
-    }
-
 
 }

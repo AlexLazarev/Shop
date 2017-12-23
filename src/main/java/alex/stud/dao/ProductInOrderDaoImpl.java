@@ -24,13 +24,11 @@ public class ProductInOrderDaoImpl implements ProductInOrderDao{
 
 
     public List<Product> getProductByIdOrder(int id) {
-        String sql = "Select* From Product INNER JOIN (SELECT id_product From ShoppingCart WHERE id_order=?)AS T ON Product.id = id_product";
-        return jdbcTemplate.query(sql,new ProductMapper(),id);
+        return null;
     }
 
     public void save(ProductInOrder entity) {
-        String sql = "INSERT INTO Product (name,price) VALUES (?,?)";
-        jdbcTemplate.update(sql,entity.getIdOrder(),entity.getIdProduct(),entity.getQuantity());
+
     }
 
     public ProductInOrder getById(int id) {

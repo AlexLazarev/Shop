@@ -93,7 +93,7 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .checkout-goods__img img { width: 120px; height: 120px; border: 1px solid rgba(48, 49, 50, 0.19999999999999996); }
 .checkout-goods__input { width: 80px; height: 40px; padding-left: 10px; color: gray; border: 1px solid rgba(48, 49, 50, 0.19999999999999996); }
 .checkout-goods__price { float: right; }
-.checkout-goods__price li { float: left; margin-left: 140px; }
+.checkout-goods__price li { float: left; margin-left: 167px; }
 .checkout-goods__price li p { line-height: 40px; }
 .checkout-goods__btn { padding: 10px 30px; border-radius: 0; border: 0 solid #303132; background-color: #6CA1AD; color: #FFFFFF; font: normal normal normal 14px/1.4em open sans,sans-serif; }
 .checkout-goods__total { padding-bottom: 30px }

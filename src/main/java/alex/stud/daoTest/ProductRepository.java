@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product,Integer> {
 
-    Product findById(int id);
-
     List<Product> findByNameLike(String name);
 
+   // @Query(name = "SELECT * FROM Product p where p.name Like :xyz",nativeQuery = true)
+    // List<Product> findMyProducts(@Param("xyz") String name);
 }

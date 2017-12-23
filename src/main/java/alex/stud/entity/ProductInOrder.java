@@ -1,11 +1,15 @@
 package alex.stud.entity;
 
 
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@Entity
+@Table(name="JpaProductInOrder")
 public class ProductInOrder {
-    private int idProduct;
-    private int idOrder;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     private int quantity;
 
     @ManyToOne
@@ -14,22 +18,6 @@ public class ProductInOrder {
     @ManyToOne
     private Order order;
 
-
-    public int getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
-    }
-
-    public int getIdOrder() {
-        return idOrder;
-    }
-
-    public void setIdOrder(int idOrder) {
-        this.idOrder = idOrder;
-    }
 
     public int getQuantity() {
         return quantity;
@@ -53,5 +41,13 @@ public class ProductInOrder {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

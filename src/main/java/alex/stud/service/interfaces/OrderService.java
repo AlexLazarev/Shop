@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrderService {
     void save(Order order);
     void deleteById(int id);
+    boolean completeOrder(Order order);
 }

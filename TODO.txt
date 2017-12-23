@@ -1,0 +1,4 @@
+1. quantity without additional model (Controller)
+2. compulsory registration
+3. add another entity...
+4. security (if i have time)

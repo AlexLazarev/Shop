@@ -59,8 +59,8 @@
                             <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
                         </div>
                         <div class="recyclebin-info_box__info">
-                            <p class="recyclebin-title"><c:out value="${product.name}"/></p>
-                            <p class="recyclebin-text"><c:out value="${product.price}"/> грн.</p>
+                            <p class="recyclebin-title"><c:out value="${product.key.name}"/></p>
+                            <p class="recyclebin-text"><c:out value="${product.key.price}"/> грн.</p>
                         </div>
                         <a href="#" class="recyclebin-info_box__btn">
                             <i class="fa fa-times" aria-hidden="true"></i>
@@ -135,14 +135,14 @@
                                         <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="">
                                     </div>
                                     <div class="checkout-goods__di">
-                                        <p> ${product.name}</p>
+                                        <p> ${product.key.name}</p>
                                         <p class="grey">Артикул: 0011</p>
                                         <a href="#">Удалить</a>
                                     </div>
                                     <ul class="checkout-goods__price">
-                                        <li><p>${product.price}</p></li>
-                                        <li><input class="checkout-goods__input" value="1" type="text"></li>
-                                        <li><p>${product.price}</p></li>
+                                        <li><p>${product.key.price}</p></li>
+                                        <li><p>${product.value}</p></li>
+                                        <li><p>${product.value * product.key.price}</p></li>
                                     </ul>
                                 </div>
                             </div>

@@ -2,54 +2,46 @@ package alex.stud.service;
 
 import alex.stud.dao.interfaces.ProductInOrderDao;
 import alex.stud.entity.Product;
-import alex.stud.entity.ProductInOrder;
 import alex.stud.entity.ShoppingCart;
-import alex.stud.service.interfaces.CustomerService;
 import alex.stud.service.interfaces.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Service
-@Scope("session")
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Autowired
     private ShoppingCart shoppingCart;
 
-    @Autowired
-    private ProductInOrderDao productInOrderDao;
-
-    public void addProduct(Product product) {
-        shoppingCart.addProduct(product);
+    public void addProduct(Product product,int quantity) {
+        shoppingCart.addProduct(product,quantity);
     }
 
-
-    public List<Product> getAllProducts() {
-        return shoppingCart.getAllProducts();
+    public List<Product> getProducts() {
+        List<Product> products = new ArrayList<>();
+        for (Map.Entry<Product,Integer> entry : shoppingCart.getAllProducts().entrySet()) {
+            products.add(entry.getKey());
+        }
+        return products;
     }
 
     public int getResultPrice() {
         int sum = 0;
-        for (Product product: shoppingCart.getAllProducts()) {
-            sum += product.getPrice();
+        for (Map.Entry<Product,Integer> entry : shoppingCart.getAllProducts().entrySet()) {
+            sum += entry.getKey().getPrice();
         }
         return sum;
     }
 
-    public void createProductInOrder() {
-        ProductInOrder productInOrder = new ProductInOrder();
-        productInOrder.setIdProduct(1); ///TEST
-        Map<Product,Integer> map = shoppingCart.getProducts();
-        for (Map.Entry<Product,Integer>  entry : map.entrySet()) {
-            productInOrder.setIdProduct(entry.getKey().getId());
-            productInOrder.setQuantity(entry.getValue());
-        }
-        productInOrderDao.save(productInOrder);
+    public Map<Product,Integer> getProductsWithQuantity(){
+        return shoppingCart.getAllProducts();
     }
+
 
     public void setCustomerId(){
 

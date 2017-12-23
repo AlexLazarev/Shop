@@ -67,21 +67,10 @@ public class SpringConfig {
     }
 
 
-
-
-
     @Bean
     public JdbcTemplate getJdbcTemplate(){
         return new JdbcTemplate(getDataSource());
     }
 
-    /*@Bean
-    public CustomerService getCustomerService(){
-        return new CustomerServiceImpl();
-    }
 
-    @Bean
-    public CustomerDao getCustomerDao(){
-        return new CustomerDaoImpl();
-    }*/
 }

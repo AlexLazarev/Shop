@@ -1,6 +1,8 @@
 package alex.stud.controller;
 
+import alex.stud.daoTest.ProductRepository;
 import alex.stud.entity.Customer;
+import alex.stud.entity.Order;
 import alex.stud.entity.OrderCustomer;
 import alex.stud.entity.Product;
 import alex.stud.service.interfaces.CustomerService;
@@ -15,35 +17,19 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
-@Scope("session")
 public class UserController {
 
     @Autowired
-    public CustomerService customerService;
+    private CustomerService customerService;
 
     @Autowired
-    public ProductService productService;
+    private ProductService productService;
 
     @Autowired
-    public OrderService orderService;
+    private OrderService orderService;
 
     @Autowired
-    public ShoppingCartService shoppingCart;
-
-    @GetMapping("/customers")
-    public String getAllUsers(Model model){
-        model.addAttribute("customers",customerService.getAll());
-        return "customers";
-    }
-
-    @GetMapping("customer/{id}")
-    public String getById(@PathVariable("id")int id, Model model){
-        model.addAttribute("customer",customerService.getById(id));
-        return "showCustomer";
-    }
-
-    //true request
-    ///////////
+    private ShoppingCartService shoppingCart;
 
 
     @PostMapping("/register")
@@ -59,7 +45,7 @@ public class UserController {
 
     @GetMapping("/main")
     public String main(Model model){
-        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProducts());
         return "main";
     }
 
@@ -71,7 +57,7 @@ public class UserController {
     @GetMapping("/selected/{id}")
     public String selectedID(@PathVariable("id") int id, Model model){
         model.addAttribute("product",productService.getById(id));
-        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProducts());
         model.addAttribute("sum",shoppingCart.getResultPrice());
         return "selected";
     }
@@ -90,30 +76,28 @@ public class UserController {
 
     @PostMapping("/addToShoppingCart/{id}")
     public String addToShoppingCart(@PathVariable("id")int id){
-        shoppingCart.addProduct(productService.getById(id));
+        //TODO quantity without additional model
+        shoppingCart.addProduct(productService.getById(id),2);
         return "redirect:/shop";
     }
 
     @GetMapping("/shop")
     public String shop(Model model){
         model.addAttribute("products", productService.getAll());
-        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProducts());
         model.addAttribute("sum",shoppingCart.getResultPrice());
         return "shop";
     }
 
-
-
-
     @GetMapping("/register")
     public String register(Model model){
-        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProducts());
         return "register";
     }
 
     @GetMapping("/checkout")
     public String checkout(Model model){
-        model.addAttribute("shoppingCart", shoppingCart.getAllProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
         return  "checkout";
     }
@@ -121,33 +105,8 @@ public class UserController {
     @PostMapping("/makeOrder")
     public String makeOrder(@ModelAttribute("")OrderCustomer orderCustomer){
         customerService.save(orderCustomer.getCustomer());
-        orderService.save(orderCustomer.getOrder());
+        //orderService.save(orderCustomer.getOrder());
+        orderService.completeOrder(orderCustomer.getOrder());
         return "redirect:/main";
-    }
-
-
-    //////////////
-
-    @GetMapping("/addCustomer")
-    public String createCustomer(){
-        return "createCustomer";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteCustomer(@PathVariable("id") int id){
-        customerService.deleteById(id);
-        return "redirect:/customers";
-    }
-
-    @GetMapping("/update/{id}")
-    public String update(@PathVariable("id") int id, Model model){
-        model.addAttribute("customer",customerService.getById(id));
-        return "editCustomer";
-    }
-
-    @PostMapping("/updateCustomer")
-    public String updateCustomer(@ModelAttribute("customer")Customer customer){
-        customerService.update(customer);
-        return "redirect:/customer/" + customer.getId();
     }
 }
