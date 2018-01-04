@@ -1,17 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <title>test</title>
-
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/font-awesome/css/font-awesome.css" />" rel="stylesheet">
-
 </head>
+
 <body>
+
     <div id="wrapper">
         <header class="header">
             <div class="container default-box clearfix">
@@ -48,73 +49,49 @@
                 <a class="header-accwindow__reg" href="register">Зарегистрироваться</a>
             </div>
         </header>
-        <div class="recyclebin">
-            <div class="recyclebin-header">
-                <h3 class="recyclebin-header_title">Корзина</h3>
-                <i class="recyclebin-header__back fa fa-angle-right fa-lg" aria-hidden="true"></i>
-            </div>
-            <div class="recyclebin-info">
-                <c:forEach items="${shoppingCart}" var="product">
-                    <div class="recyclebin-info_box">
-                        <div class="recyclebin-info_box__img">
-                            <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_298,h_355,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.png" alt="Ваш товар"/>
-                        </div>
-                        <div class="recyclebin-info_box__info">
-                            <p class="recyclebin-title"><c:out value="${product.name}"/></p>
-                            <p class="recyclebin-text"><c:out value="${product.price}"/> грн.</p>
-                        </div>
-                        <a href="#" class="recyclebin-info_box__btn">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </a>
+        <div class="content">
+            <div class="container">
+                <div class="register">
+                    <div class="register-title text-center">
+                        <h4 class="bold-title">Добавление товара</h4>
                     </div>
-                </c:forEach>
-            </div>
-            <div class="recyclebin-sum">
-                <div class="recyclebin-sum">
-                    <p class="recyclebin-sum_text">Сумма</p>
-                    <p class="recyclebin-sum_text">${sum}</p>
-                </div>
-            </div>
-            <div class='recyclebin-footer rb-border'>
-                <a href="#" class="recyclebin-footer_btn">Перейти в корзину</a>
-            </div>
-        </div>
-        <div class="content default">
-            <div class="home">
-                <div class="container default-box">
-                    <div class="middle-block">
-                        <h2 class="middle-block__title main-title font-TNR">Осень и зима</h2>
-                        <a class="middle-block__btn" href="shop">В магазин</a>
-                    </div>
-                </div>
-            </div>
-            <div class="bottom-content">
-                <div class="separator">
-                    <div class="container default-box">
-                        <p class="separator__text">Бесплатная доставка по Украине</p>
-                    </div>
-                </div>
-                <div class="container default-box">
-                    <div class="text-center">
-                        <h3 class="bottom-content__title font-TNR main-title">Круглый год</h3>
-                        <div class="line line__main"></div>
-                        <h4 class="bottom-content__subtitle font-Arial">Обязательные вещи в вашем гардеробе</h4>
-                    </div>
-                    <div class="goods">
-                        <div class="goods-box">
-                            <div class="goods-name">
-                                <p class="goods-box__text font-Arial">Юбка миди</p>
-                            </div>
+                    <div class="register-body">
+                        <div class="register-body__info">
+                            <p class="register-body__boldtext">Описание</p>
+                            <p class="register-body__text big-padding">Вы можете добавить товар с помощью данных полей</p>
                         </div>
-                        <div class="goods-box2">
-                            <div class="goods-title">
-                                <p class="goods-box2__text font-TNR">Скидки</p>
-                            </div>
-                        </div>
-                        <div class="goods-box">
-                            <div class="goods-name">
-                                <p class="goods-box__text font-Arial">Юбка миди</p>
-                            </div>
+                        <div class="register-body__form">
+                            <form action="/addProduct" method="post">
+                                <p class="register-body__text">Тип</p>
+                                <input class="register-body__input" type="text" name="type">
+                                <p class="register-body__text">Наименование</p>
+                                <input class="register-body__input" type="text" name="name">
+                                <p class="register-body__text">Цена</p>
+                                <input class="register-body__input" type="text" name="price">
+                                <p class="register-body__text">Количество</p>
+                                <input class="register-body__input" type="text" name="quantity">
+                                <p class="register-body__text">Гендер</p>
+                                <select name="gender" class="checkout-contact__select">
+                                    <option value="male">Мужской</option>
+                                    <option value="female">Женский</option>
+                                    <option value="unisex">Унисекс</option>
+                                </select>
+                                <p class="register-body__text">Размер</p>
+                                <select name="size" class="checkout-contact__select">
+                                    <option value="XXS">XXS</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                </select>
+                                <p class="register-body__text">Материал</p>
+                                <input class="register-body__input" type="text" name="material">
+                                <p class="register-body__text">Описание</p>
+                                <input class="register-body__input__description" type="text" name="description">
+                                <input type="submit" value="Добавить товар">
+                                </form>
                         </div>
                     </div>
                 </div>
@@ -160,5 +137,6 @@
 
     <script type="text/javascript" src="<c:url value="/resources/js/jquery.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/script.js"/>"></script>
+
 </body>
 </html>

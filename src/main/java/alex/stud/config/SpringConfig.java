@@ -45,6 +45,9 @@ public class SpringConfig {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         properties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+        properties.setProperty("hibernate.connection.CharSet",environment.getProperty("hibernate.connection.CharSet"));
+        properties.setProperty("hibernate.connection.characterEncoding",environment.getProperty("hibernate.connection.characterEncoding"));
+        properties.setProperty("hibernate.connection.useUnicode",environment.getProperty("hibernate.connection.useUnicode"));
         return properties;
     }
 

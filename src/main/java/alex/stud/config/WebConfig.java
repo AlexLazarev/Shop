@@ -9,14 +9,11 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.ResourceBundleViewResolver;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "alex.stud.controller")
-public class    WebConfig extends WebMvcConfigurerAdapter{
+public class WebConfig extends WebMvcConfigurerAdapter{
 
     @Bean
     public ViewResolver internalResourceViewResolver() {
@@ -26,13 +23,6 @@ public class    WebConfig extends WebMvcConfigurerAdapter{
         bean.setSuffix(".jsp");
         return bean;
 
-    }
-
-    @Bean
-    public ViewResolver resourceBundleViewResolver() {
-        ResourceBundleViewResolver bean = new ResourceBundleViewResolver();
-        bean.setBasename("views");
-        return bean;
     }
 
     @Override

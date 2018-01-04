@@ -1,11 +1,9 @@
 package alex.stud.service;
 
-import alex.stud.dao.interfaces.ProductInOrderDao;
 import alex.stud.entity.Product;
 import alex.stud.entity.ShoppingCart;
 import alex.stud.service.interfaces.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,7 +41,4 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
 
-    public void setCustomerId(){
-
-    }
 }

@@ -9,16 +9,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
+
+
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
 
+
    public List<Product> getAll() {
         return productRepository.findAll();
     }
-
     public void save(Product product) {
         productRepository.save(product);
     }

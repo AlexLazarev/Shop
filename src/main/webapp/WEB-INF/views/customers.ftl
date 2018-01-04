@@ -14,7 +14,6 @@
             <td>${customer.email}</td>
             <td><a href="/delete/${customer.id}">delete</a> </td>
             <td><a href="/update/${customer.id}">update</a> </td>
-
         </tr>
      </#list>
 </table>

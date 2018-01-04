@@ -1,8 +1,6 @@
 package alex.stud.controller;
 
-import alex.stud.daoTest.ProductRepository;
 import alex.stud.entity.Customer;
-import alex.stud.entity.Order;
 import alex.stud.entity.OrderCustomer;
 import alex.stud.entity.Product;
 import alex.stud.service.interfaces.CustomerService;
@@ -10,7 +8,6 @@ import alex.stud.service.interfaces.OrderService;
 import alex.stud.service.interfaces.ProductService;
 import alex.stud.service.interfaces.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -49,11 +46,6 @@ public class UserController {
         return "main";
     }
 
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin-panel";
-    }
-
     @GetMapping("/selected/{id}")
     public String selectedID(@PathVariable("id") int id, Model model){
         model.addAttribute("product",productService.getById(id));
@@ -62,11 +54,6 @@ public class UserController {
         return "selected";
     }
 
-    @PostMapping("/addProduct")
-    public String addProduct(@ModelAttribute("")Product product){ //@ModelAttribute("customer")
-        productService.save(product);
-        return "redirect:/admin";
-    }
 
     @GetMapping("shop/{id}")
     public String getProductById(@PathVariable("id")int id, Model model){

@@ -1,6 +1,5 @@
 package alex.stud.entity;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

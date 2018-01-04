@@ -1,7 +1,13 @@
 package alex.stud.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "JpaCustomer")
 public class Customer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName;
     private String lastName;

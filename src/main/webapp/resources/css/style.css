@@ -34,6 +34,14 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .line { background: #303132; height: 1px; }
 
 .container { width: 980px; margin: 0 auto; }
+.container__admin {width: 1500; margin: 0 auto; }
+.table-goods__header { padding-bottom: 10px; border-bottom: 1px solid #000; width: 100%; }
+
+.table-goods__title { width: 12%; display: inline-block; padding-right: 15px; word-wrap: break-word; }
+.table-goods__title:last-child { margin-right: 0 }
+
+.table-goods__item { padding-top: 10px; }
+.table-goods__info { display: inline-block; padding-right: 15px; width: 12%; word-wrap: break-word; }
 
 .header { position: fixed; top: 0; right: 0; left: 0; width: 100%; background: #535151; padding: 31px 0 29px; z-index: 1; }
 .header-logo { float: left; }
@@ -145,11 +153,11 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .register-body__text { padding-bottom: 10px; }
 .register-body__link { margin: 0 10px; }
 .register-body__text.big-padding { padding-bottom: 30px; }
-
+.register-body__input__description {  flex: 1; text-align: center; padding-top: 50px; height: 250px;}
 .content { margin-top: 90px; padding-top: 70px; margin-bottom: 70px; flex: 1; min-height: 100%; }
 .content.default { padding-top: 0; }
 
-.home { background: url(https://static.wixstatic.com/media/84770f_b5b78cd83b6342199b7370a2ba6b9e06.jpg/v1/fill/w_3840,h_1201,al_c,q_85,usm_0.66_1.00_0.01/84770f_b5b78cd83b6342199b7370a2ba6b9e06.webp) no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; min-height: 600px; position: relative; }
+.home { background: url("https://static.wixstatic.com/media/84770f_b5b78cd83b6342199b7370a2ba6b9e06.jpg/v1/fill/w_3840,h_1201,al_c,q_85,usm_0.66_1.00_0.01/84770f_b5b78cd83b6342199b7370a2ba6b9e06.webp") no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; min-height: 600px; position: relative; }
 
 .main-title { font-weight: bold; text-transform: uppercase; color: #303132; }
 

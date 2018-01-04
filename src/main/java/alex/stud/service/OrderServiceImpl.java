@@ -10,6 +10,7 @@ import alex.stud.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -44,6 +45,16 @@ public class OrderServiceImpl implements OrderService {
             productInOrderRepository.save(productInOrder);
         }
         return true;
+    }
+
+    @Override
+    public List<Order> getAllByIdCustomer(int id) {
+       return orderRepository.getAllByIdCustomer(id);
+    }
+
+    @Override
+    public List<Order> getAll() {
+        return  orderRepository.findAll();
     }
 
 }

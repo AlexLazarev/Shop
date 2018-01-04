@@ -1,6 +1,5 @@
 package alex.stud.entity;
 
-import java.util.List;
 import java.util.Map;
 
 public interface ShoppingCart {

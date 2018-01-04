@@ -50,26 +50,40 @@
             </div>
         </header>
         <div class="content">
-            <div class="container">
-                <div class="register">
-                    <div class="register-title text-center">
-                        <h4 class="bold-title">Добавление товара</h4>
+            <div class="container__admin">
+                <div class="register-title text-center">
+                    <h4 class="bold-title">Заказы</h4>
+                </div>
+                <div class="table-goods">
+                    <div class="table-goods__header">
+                        <div class="table-goods__title"><p>Имя</p></div>
+                        <div class="table-goods__title"><p>Фамилия</p></div>
+                        <div class="table-goods__title"><p>Город</p></div>
+                        <div class="table-goods__title"><p>Email</p></div>
+                        <div class="table-goods__title"><p>Способ оплаты</p></div>
+                        <div class="table-goods__title"><p>Способ доставки</p></div>
+                        <div class="table-goods__title"><p>Товар</p></div>
+                        <div class="table-goods__title"><p>Количество</p></div>
                     </div>
-                    <div class="register-body">
-                        <div class="register-body__info">
-                            <p class="register-body__boldtext">Описание</p>
-                            <p class="register-body__text big-padding">Вы можете добавить товар с помощью данных полей</p>
+                    <c:forEach items="${customer}" var="customer">
+                        <div class="table-goods__item">
+                            <div class="table-goods__info item-name"><p>${customer.firstName}</p></div>
+                            <div class="table-goods__info item-surname"><p>${customer.lastName}</p></div>
+                            <div class="table-goods__info item-city"><p>Kharkiv</p></div>
+                            <div class="table-goods__info item-email"><p>${customer.email}</p></div>
+                            <c:forEach items="${order}" var="order">
+                                <c:choose>
+                                    <c:when test="${order.idCustomer == customer.id}">
+                                        <div class="table-goods__info item-pay"><p>${order.payment}</p></div>
+                                        <div class="table-goods__info item-delivery"><p>${order.delivery}</p></div>
+                                        <div class="table-goods__info item-goods"><p>text</p></div>
+                                        <div class="table-goods__info item-count"><p>text</p></div>
+                                    </c:when>
+                                </c:choose>
+                            </c:forEach>
                         </div>
-                        <div class="register-body__form">
-                            <form action="/addProduct" method="post">
-                                <p class="register-body__text">Название</p>
-                                <input class="register-body__input" type="text" name="name">
-                                <p class="register-body__text">Цена</p>
-                                <input class="register-body__input" type="text" name="price">
-                                <input type="submit" value="Добавить товар">
-                            </form>
-                        </div>
-                    </div>
+
+                    </c:forEach>
                 </div>
             </div>
         </div>

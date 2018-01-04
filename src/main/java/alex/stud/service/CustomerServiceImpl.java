@@ -1,6 +1,6 @@
 package alex.stud.service;
 
-import alex.stud.dao.interfaces.CustomerDao;
+import alex.stud.daoTest.CustomerRepository;
 import alex.stud.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    private CustomerDao customerDao;
+    private CustomerRepository customerRepository;
 
     public List<Customer> getAll() {
-        return customerDao.getAll();
+        return customerRepository.findAll();
     }
 
     public void save(Customer customer) {
@@ -22,19 +22,19 @@ public class CustomerServiceImpl implements CustomerService {
             //TODO exeception
         }
 
-        customerDao.save(customer);
+        customerRepository.save(customer);
     }
 
     public Customer getById(int id) {
-        return customerDao.getById(id);
+        return customerRepository.getOne(id);
     }
 
     public void update(Customer customer) {
-        customerDao.update(customer);
+        //customerRepository.update(customer);
     }
 
     public void deleteById(int id) {
-        customerDao.deleteById(id);
+        customerRepository.delete(id);
     }
 
 }
