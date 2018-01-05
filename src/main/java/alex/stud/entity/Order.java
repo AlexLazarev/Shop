@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "JpaOrder")
+@Table(name = "MyOrder")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int idCustomer;
+    private int idUser;
     private String city;
     private String delivery;
     private String payment;
@@ -29,15 +29,6 @@ public class Order {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-
-    public int getIdCustomer() {
-        return idCustomer;
-    }
-
-    public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
     }
 
     public String getCity() {
@@ -70,5 +61,13 @@ public class Order {
 
     public void setProductInOrders(List<ProductInOrder> productInOrders) {
         this.productInOrders = productInOrders;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

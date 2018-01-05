@@ -4,7 +4,7 @@ package alex.stud.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="JpaProductInOrder")
+@Table(name="ProductInOrder")
 public class ProductInOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,7 +17,6 @@ public class ProductInOrder {
 
     @ManyToOne
     private Order order;
-
 
     public int getQuantity() {
         return quantity;

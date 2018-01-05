@@ -1,6 +1,6 @@
 package alex.stud.service;
 
-import alex.stud.daoTest.ProductRepository;
+import alex.stud.dao.ProductRepository;
 import alex.stud.entity.Product;
 import alex.stud.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

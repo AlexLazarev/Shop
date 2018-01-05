@@ -1,7 +1,7 @@
 package alex.stud.controller;
 
 import alex.stud.entity.Product;
-import alex.stud.service.interfaces.CustomerService;
+import alex.stud.service.interfaces.UserService;
 import alex.stud.service.interfaces.OrderService;
 import alex.stud.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    private CustomerService customerService;
+    private UserService userService;
 
     @Autowired
     private OrderService orderService;
@@ -31,7 +31,7 @@ public class AdminController {
 
     @GetMapping("/checkOrders")
     public String adminCheckOrders(Model model) {
-        model.addAttribute("customer",customerService.getAll());
+        model.addAttribute("customer", userService.getAll());
         model.addAttribute("order",orderService.getAll());
         return "admin-checkOrders";
     }

@@ -11,7 +11,7 @@ public class OrderCustomer {
 
     public Order getOrder(){
         Order order = new Order();
-        order.setIdCustomer(getIdCustomer());
+        order.setIdUser(getIdCustomer());
         order.setCity(city);
         order.setDelivery(delivery);
         order.setPayment(payment);
@@ -19,12 +19,12 @@ public class OrderCustomer {
     }
 
 
-    public Customer getCustomer(){
-        Customer customer = new Customer();
-        customer.setFirstName(firstName);
-        customer.setlastName(lastName);
-        customer.setEmail(email);
-        return customer;
+    public User getCustomer(){
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setlastName(lastName);
+        user.setEmail(email);
+        return user;
     }
 
     public String getFirstName() {

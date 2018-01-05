@@ -21,13 +21,15 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"alex.stud.entity","alex.stud.dao","alex.stud.service"})
-@EnableJpaRepositories(basePackages = {"alex.stud.daoTest"})
+@ComponentScan(basePackages = {"alex.stud.entity","alex.stud.service", "alex.stud.validator"})
+@EnableJpaRepositories(basePackages = {"alex.stud.dao"})
 @PropertySource(value = "classpath:application.properties")
 public class SpringConfig {
 
     @Autowired
     private Environment environment;
+
+
 
 
     @Bean

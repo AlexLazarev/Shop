@@ -61,7 +61,7 @@
                             <p class="register-body__text big-padding">Вы можете добавить товар с помощью данных полей</p>
                         </div>
                         <div class="register-body__form">
-                            <form action="/addProduct" method="post">
+                            <form action="admin/addProduct" method="post">
                                 <p class="register-body__text">Тип</p>
                                 <input class="register-body__input" type="text" name="type">
                                 <p class="register-body__text">Наименование</p>

@@ -1,7 +1,7 @@
 package alex.stud.service;
 
-import alex.stud.daoTest.OrderRepository;
-import alex.stud.daoTest.ProductInOrderRepository;
+import alex.stud.dao.OrderRepository;
+import alex.stud.dao.ProductInOrderRepository;
 import alex.stud.entity.Order;
 import alex.stud.entity.Product;
 import alex.stud.entity.ProductInOrder;
@@ -48,8 +48,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getAllByIdCustomer(int id) {
-       return orderRepository.getAllByIdCustomer(id);
+    public List<Order> getAllByIdUser(int id) {
+       return orderRepository.getAllByIdUser(id);
     }
 
     @Override

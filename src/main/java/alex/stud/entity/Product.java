@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "JpaProduct")
+@Table(name = "Product")
 public class Product{
 
     @Id

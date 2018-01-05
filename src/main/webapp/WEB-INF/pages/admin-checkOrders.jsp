@@ -65,15 +65,15 @@
                         <div class="table-goods__title"><p>Товар</p></div>
                         <div class="table-goods__title"><p>Количество</p></div>
                     </div>
-                    <c:forEach items="${customer}" var="customer">
+                    <c:forEach items="${order}" var="order">
                         <div class="table-goods__item">
-                            <div class="table-goods__info item-name"><p>${customer.firstName}</p></div>
-                            <div class="table-goods__info item-surname"><p>${customer.lastName}</p></div>
-                            <div class="table-goods__info item-city"><p>Kharkiv</p></div>
-                            <div class="table-goods__info item-email"><p>${customer.email}</p></div>
+                            <div class="table-goods__info item-name"><p>${order.id}</p></div>
+                            <div class="table-goods__info item-surname"><p>${order.idUser}</p></div>
+                            <div class="table-goods__info item-city"><p>${order.payment}</p></div>
+                            <div class="table-goods__info item-email"><p>${order.delivery}</p></div>
                             <c:forEach items="${order}" var="order">
                                 <c:choose>
-                                    <c:when test="${order.idCustomer == customer.id}">
+                                    <c:when test="${order.idCustomer == user.id}">
                                         <div class="table-goods__info item-pay"><p>${order.payment}</p></div>
                                         <div class="table-goods__info item-delivery"><p>${order.delivery}</p></div>
                                         <div class="table-goods__info item-goods"><p>text</p></div>

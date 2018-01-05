@@ -1,15 +1,13 @@
 package alex.stud.controller;
 
-import alex.stud.entity.Customer;
+import alex.stud.entity.User;
 import alex.stud.entity.OrderCustomer;
-import alex.stud.entity.Product;
-import alex.stud.service.interfaces.CustomerService;
-import alex.stud.service.interfaces.OrderService;
-import alex.stud.service.interfaces.ProductService;
-import alex.stud.service.interfaces.ShoppingCartService;
+import alex.stud.service.interfaces.*;
+import alex.stud.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -17,7 +15,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private CustomerService customerService;
+    private SecurityService securityService;
+
+    @Autowired
+    private UserValidator userValidator;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ProductService productService;
@@ -29,22 +33,43 @@ public class UserController {
     private ShoppingCartService shoppingCart;
 
 
+    @GetMapping("/register")
+    public String register(Model model){
+        model.addAttribute("shoppingCart", shoppingCart.getProducts());
+        model.addAttribute("user",new User());
+        return "register";
+    }
+
     @PostMapping("/register")
-    public String addCustomer(@ModelAttribute Customer customer){ //@ModelAttribute("customer")
-        customerService.save(customer);
+    public String addUser(@ModelAttribute User user, BindingResult bindingResult,Model model){
+        userValidator.validate(user,bindingResult);
+        if(bindingResult.hasErrors()){
+            return "register";
+        }
+        userService.save(user);
+        securityService.autoLogin(user.getUsername(),user.getConfirmPassword());
+
         return "redirect:/main";
     }
 
-    @GetMapping("/")
-    public String start(){
-        return "main";
+    @GetMapping("/login")
+    public String login(Model model,String error, String logout){
+        if(error != null){
+            model.addAttribute("error", "Incorrect");
+        }
+        if(logout != null){
+            model.addAttribute("message","Successful");
+        }
+        return "login";
     }
 
-    @GetMapping("/main")
-    public String main(Model model){
+
+    @GetMapping(value = {"/","/main"})
+    public String start(Model model){
         model.addAttribute("shoppingCart", shoppingCart.getProducts());
         return "main";
     }
+
 
     @GetMapping("/selected/{id}")
     public String selectedID(@PathVariable("id") int id, Model model){
@@ -76,11 +101,6 @@ public class UserController {
         return "shop";
     }
 
-    @GetMapping("/register")
-    public String register(Model model){
-        model.addAttribute("shoppingCart", shoppingCart.getProducts());
-        return "register";
-    }
 
     @GetMapping("/checkout")
     public String checkout(Model model){
@@ -91,7 +111,7 @@ public class UserController {
 
     @PostMapping("/makeOrder")
     public String makeOrder(@ModelAttribute("")OrderCustomer orderCustomer){
-        customerService.save(orderCustomer.getCustomer());
+        userService.save(orderCustomer.getCustomer());
         //orderService.save(orderCustomer.getOrder());
         orderService.completeOrder(orderCustomer.getOrder());
         return "redirect:/main";

@@ -1,20 +1,28 @@
 package alex.stud.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "JpaCustomer")
-public class Customer {
+@Table(name = "User")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
     private String number;
     private String password;
+    @Transient //without serializible
+    private String confirmPassword;
 
+    @ManyToMany
+    @JoinTable(name = "RoleInUser", joinColumns = @JoinColumn(name = "idUser"),
+            inverseJoinColumns = @JoinColumn(name = "idRole"))
+    private Set<Role> roles;
 
     public String getlastName() {
         return lastName;
@@ -62,5 +70,30 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
