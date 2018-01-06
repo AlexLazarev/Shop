@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();
-        roles.add(roleRepository.getOne(1));
+        roles.add(roleRepository.getOne(2));
         user.setRoles(roles);
         userRepository.save(user);
     }
@@ -65,5 +65,4 @@ public class UserServiceImpl implements UserService {
     public List<User> getAll() {
         return userRepository.findAll();
     }
-
 }

@@ -29,9 +29,6 @@ public class SpringConfig {
     @Autowired
     private Environment environment;
 
-
-
-
     @Bean
     public DataSource getDataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -63,7 +60,6 @@ public class SpringConfig {
         return entityManagerFactory;
     }
 
-
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -71,11 +67,9 @@ public class SpringConfig {
         return transactionManager;
     }
 
-
     @Bean
     public JdbcTemplate getJdbcTemplate(){
         return new JdbcTemplate(getDataSource());
     }
-
 
 }

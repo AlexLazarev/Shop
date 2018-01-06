@@ -26,14 +26,14 @@ public class AdminController {
 
     @GetMapping("")
     public String admin() {
-        return "admin";
+        return "admin/admin";
     }
 
     @GetMapping("/checkOrders")
     public String adminCheckOrders(Model model) {
         model.addAttribute("customer", userService.getAll());
         model.addAttribute("order",orderService.getAll());
-        return "admin-checkOrders";
+        return "admin/checkOrders";
     }
 
     @PostMapping("/addProduct")

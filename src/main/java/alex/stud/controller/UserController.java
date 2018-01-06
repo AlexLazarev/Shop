@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String addUser(@ModelAttribute User user, BindingResult bindingResult,Model model){
+    public String addUser(@ModelAttribute("user") User user, BindingResult bindingResult){
         userValidator.validate(user,bindingResult);
         if(bindingResult.hasErrors()){
             return "register";
@@ -49,7 +49,7 @@ public class UserController {
         userService.save(user);
         securityService.autoLogin(user.getUsername(),user.getConfirmPassword());
 
-        return "redirect:/main";
+        return "redirect:main";
     }
 
     @GetMapping("/login")
@@ -67,7 +67,12 @@ public class UserController {
     @GetMapping(value = {"/","/main"})
     public String start(Model model){
         model.addAttribute("shoppingCart", shoppingCart.getProducts());
-        return "main";
+        model.addAttribute("sum",shoppingCart.getResultPrice());
+        return "user/main";
+    }
+    @GetMapping("/error_page")
+    public String error(){
+        return "errorPage";
     }
 
 
@@ -76,20 +81,20 @@ public class UserController {
         model.addAttribute("product",productService.getById(id));
         model.addAttribute("shoppingCart", shoppingCart.getProducts());
         model.addAttribute("sum",shoppingCart.getResultPrice());
-        return "selected";
+        return "user/selected";
     }
 
 
     @GetMapping("shop/{id}")
     public String getProductById(@PathVariable("id")int id, Model model){
         model.addAttribute("product",productService.getById(id));
-        return "selected";
+        return "user/selected";
     }
 
     @PostMapping("/addToShoppingCart/{id}")
-    public String addToShoppingCart(@PathVariable("id")int id){
+    public String addToShoppingCart(@PathVariable("id")int id,@RequestParam("quantity") int quantity){
         //TODO quantity without additional model
-        shoppingCart.addProduct(productService.getById(id),2);
+    shoppingCart.addProduct(productService.getById(id),quantity);
         return "redirect:/shop";
     }
 
@@ -98,7 +103,7 @@ public class UserController {
         model.addAttribute("products", productService.getAll());
         model.addAttribute("shoppingCart", shoppingCart.getProducts());
         model.addAttribute("sum",shoppingCart.getResultPrice());
-        return "shop";
+        return "user/shop";
     }
 
 
@@ -106,14 +111,15 @@ public class UserController {
     public String checkout(Model model){
         model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
-        return  "checkout";
+        model.addAttribute("user",userService.findByUsername("aloveubaby"));
+
+        return "user/checkout";
     }
 
     @PostMapping("/makeOrder")
     public String makeOrder(@ModelAttribute("")OrderCustomer orderCustomer){
-        userService.save(orderCustomer.getCustomer());
-        //orderService.save(orderCustomer.getOrder());
+        System.out.println(orderCustomer.getCustomer().toString());
         orderService.completeOrder(orderCustomer.getOrder());
-        return "redirect:/main";
+        return "redirect:/main"; //кидаем url
     }
 }

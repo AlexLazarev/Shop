@@ -34,7 +34,7 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .line { background: #303132; height: 1px; }
 
 .container { width: 980px; margin: 0 auto; }
-.container__admin {width: 1500; margin: 0 auto; }
+.container__admin {width: 1500px; margin: 0 auto; }
 .table-goods__header { padding-bottom: 10px; border-bottom: 1px solid #000; width: 100%; }
 
 .table-goods__title { width: 12%; display: inline-block; padding-right: 15px; word-wrap: break-word; }
@@ -252,3 +252,109 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 
 .bottom-ftr { margin-top: 30px; }
 .bottom-ftr__text { text-transform: uppercase; color: #D3D3D3; font: normal normal normal 13px/1.4em "open sans", sans-serif; letter-spacing: 0.1em; }
+
+
+
+
+
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input {
+    margin-top: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin button {
+    margin-top: 10px;
+}
+
+.has-error {
+    color: red
+}
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+
+.form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+.form-control::-moz-placeholder {
+    color: #999;
+    opacity: 1
+}
+
+.form-control:-ms-input-placeholder {
+    color: #999
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #999
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #eee;
+    opacity: 1
+}
+
+.form-control[disabled], fieldset[disabled] .form-control {
+    cursor: not-allowed
+}
+
+textarea.form-control {
+    height: auto
+}
+
+
+.form-group {
+    margin-bottom: 15px
+}

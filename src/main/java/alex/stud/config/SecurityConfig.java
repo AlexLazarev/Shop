@@ -29,17 +29,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http    .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .and().formLogin()
-                .loginPage("/loginPage").permitAll()
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .and().exceptionHandling().accessDeniedPage("/error_page");
-    }
-
-
+                    .antMatchers("/resources/**").permitAll()
+                    .antMatchers("/register").permitAll()
+                    .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                    .antMatchers("/user/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+                    .anyRequest().authenticated()
+                    .and()
+                .formLogin()
+                    .loginPage("/login")
+                    .permitAll();
+        }
 
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {

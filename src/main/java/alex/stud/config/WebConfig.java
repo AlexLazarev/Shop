@@ -22,6 +22,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     public ViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
+
         resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".jsp");
         resolver.setContentType("text/html;charsets=UTF-8");
@@ -30,8 +31,8 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 
     @Bean
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("classpath:validation");
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasenames("/WEB-INF/locale/validation");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
