@@ -59,7 +59,7 @@
                                     </div>
                                     <button class="sg-btn">Добавить в корзину</button>
                                 </form>
-                            </div>11
+                            </div>
                         </div>
                         <div class="sg-info_description__detailinfo sg-box">
                             <h3 class="sg-di_title">О товаре</h3>

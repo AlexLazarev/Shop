@@ -5,6 +5,7 @@ import alex.stud.dao.UserRepository;
 import alex.stud.entity.Role;
 import alex.stud.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,9 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    @Override
     public User findByUsername(String name) {
         return userRepository.findByUsername(name);
+    }
+
+    @Transactional
+    public User getCurrentUser() {
+        return userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Transactional

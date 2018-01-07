@@ -26,22 +26,23 @@
                         </div>
                         <div class="checkout-contact__form">
                             <form action="/makeOrder" method="post">
+                                <input type="hidden" value="${user.id}" name="idUser">
                                 <p class="checkout-contact__text">Имя</p>
-                                <input class="checkout-contact__input" type="text" value="${user.firstName}" name="firstName">
+                                <input class="form-control" type="text" value="${user.firstName}" name="firstName">
                                 <p class="checkout-contact__text">Фамилия</p>
-                                <input class="checkout-contact__input" type="text" value="${user.lastName}" name="lastName">
+                                <input class="form-control" type="text" value="${user.lastName}" name="lastName">
                                 <p class="checkout-contact__text">email</p>
-                                <input class="checkout-contact__input" type="text" value="${user.email}" name="email">
+                                <input class="form-control" type="text" value="${user.email}" name="email">
                                 <p class="checkout-contact__text">Город</p>
-                                <input class="checkout-contact__input" type="text" name="city">
+                                <input class="form-control" type="text" name="city">
                                 <p class="checkout-contact__text">Способ доставки</p>
-                                <select name="delivery" class="checkout-contact__select">
+                                <select name="delivery" class="form-control">
                                     <option value="PickUp">Самовывоз из Новой Почты</option>
                                     <option value="NEW MAIL">Курьер Новая Почта</option>
                                     <option value="Курьер Мист Экспресс">Курьер Мист Экспресс</option>
                                 </select>
                                 <p class="checkout-contact__text">Способ оплаты</p>
-                                <select name="payment" class="checkout-contact__select">
+                                <select name="payment" class="form-control">
                                     <option value="Cash">Наличными</option>
                                     <option value="Credit">Кредит</option>
                                     <option value="WebMoney">WebMoney</option>

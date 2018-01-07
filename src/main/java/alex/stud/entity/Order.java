@@ -14,7 +14,7 @@ public class Order {
     private String city;
     private String delivery;
     private String payment;
-
+    private boolean status;
 
     //fetch - get
     //to load it together with the rest of the fields (i.e. eagerly) or
@@ -69,5 +69,13 @@ public class Order {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

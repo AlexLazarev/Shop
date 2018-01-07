@@ -12,44 +12,50 @@
 </head>
 
 <body>
-
     <div id="wrapper">
-            <div class="container__admin">
-                <div class="register-title text-center">
-                    <h4 class="bold-title">Заказы</h4>
+        <div class="container__admin">
+            <div class="register-title text-center">
+                <h4 class="bold-title">Заказы</h4>
+            </div>
+            <div class="table-goods">
+                <div class="table-goods__header">
+                    <div class="table-goods__title"><p>#</p></div>
+                    <div class="table-goods__title"><p>ФИО</p></div>
+                    <div class="table-goods__title"><p>Email</p></div>
+                    <div class="table-goods__title"><p>Город</p></div>
+                    <div class="table-goods__title"><p>Способ оплаты</p></div>
+                    <div class="table-goods__title"><p>Способ доставки</p></div>
+                    <div class="table-goods__title"><p>Товар</p></div>
+                    <div class="table-goods__title"><p>Статус</p></div>
                 </div>
-                <div class="table-goods">
-                    <div class="table-goods__header">
-                        <div class="table-goods__title"><p>Имя</p></div>
-                        <div class="table-goods__title"><p>Фамилия</p></div>
-                        <div class="table-goods__title"><p>Город</p></div>
-                        <div class="table-goods__title"><p>Email</p></div>
-                        <div class="table-goods__title"><p>Способ оплаты</p></div>
-                        <div class="table-goods__title"><p>Способ доставки</p></div>
-                        <div class="table-goods__title"><p>Товар</p></div>
-                        <div class="table-goods__title"><p>Количество</p></div>
-                    </div>
-                    <c:forEach items="${order}" var="order">
-                        <div class="table-goods__item">
-                            <div class="table-goods__info item-name"><p>${order.id}</p></div>
-                            <div class="table-goods__info item-surname"><p>${order.idUser}</p></div>
-                            <div class="table-goods__info item-city"><p>${order.payment}</p></div>
-                            <div class="table-goods__info item-email"><p>${order.delivery}</p></div>
-                            <c:forEach items="${order}" var="order">
+                <c:forEach items="${order}" var="order">
+                    <div class="table-goods__item">
+                        <div class="table-goods__info item-name"><p>${order.id}</p></div>
+                        <c:forEach items="${user}" var="user">
+                            <c:choose>
+                                <c:when test="${order.idUser == user.id}">
+                                    <div class="table-goods__info item-name"><p>${user.firstName} ${user.lastName}</p></div>
+                                    <div class="table-goods__info item-email"><p>${user.email}</p></div>
+                                </c:when>
+                            </c:choose>
+                        </c:forEach>
+                        <div class="table-goods__info item-city"><p>${order.city}</p></div>
+                        <div class="table-goods__info item-payment"><p>${order.payment}</p></div>
+                        <div class="table-goods__info item-delivery"><p>${order.delivery}</p></div>
+                        <select name="product" class="table-goods__info item-products">
+                            <c:forEach items="${product}" var="product">
                                 <c:choose>
-                                    <c:when test="${order.idCustomer == user.id}">
-                                        <div class="table-goods__info item-pay"><p>${order.payment}</p></div>
-                                        <div class="table-goods__info item-delivery"><p>${order.delivery}</p></div>
-                                        <div class="table-goods__info item-goods"><p>text</p></div>
-                                        <div class="table-goods__info item-count"><p>text</p></div>
+                                    <c:when test="${product.id == 1}">
+                                        <option>${product.name}</option>
                                     </c:when>
                                 </c:choose>
                             </c:forEach>
-                        </div>
+                        </select>
 
-                    </c:forEach>
-                </div>
+                    </div>
+                </c:forEach>
             </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="<c:url value="/resources/js/jquery.js"/>"></script>

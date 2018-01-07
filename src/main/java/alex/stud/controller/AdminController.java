@@ -31,8 +31,9 @@ public class AdminController {
 
     @GetMapping("/checkOrders")
     public String adminCheckOrders(Model model) {
-        model.addAttribute("customer", userService.getAll());
+        model.addAttribute("user", userService.getAll());
         model.addAttribute("order",orderService.getAll());
+        model.addAttribute("product",productService.getAll());
         return "admin/checkOrders";
     }
 

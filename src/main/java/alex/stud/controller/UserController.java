@@ -1,7 +1,7 @@
 package alex.stud.controller;
 
+import alex.stud.entity.Order;
 import alex.stud.entity.User;
-import alex.stud.entity.OrderCustomer;
 import alex.stud.service.interfaces.*;
 import alex.stud.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,12 +53,9 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model,String error, String logout){
+    public String login(Model model,String error){
         if(error != null){
-            model.addAttribute("error", "Incorrect");
-        }
-        if(logout != null){
-            model.addAttribute("message","Successful");
+            model.addAttribute("error", "Username or password is incorrect.");
         }
         return "login";
     }
@@ -93,7 +90,6 @@ public class UserController {
 
     @PostMapping("/addToShoppingCart/{id}")
     public String addToShoppingCart(@PathVariable("id")int id,@RequestParam("quantity") int quantity){
-        //TODO quantity without additional model
     shoppingCart.addProduct(productService.getById(id),quantity);
         return "redirect:/shop";
     }
@@ -111,15 +107,14 @@ public class UserController {
     public String checkout(Model model){
         model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
-        model.addAttribute("user",userService.findByUsername("aloveubaby"));
+        model.addAttribute("user",userService.getCurrentUser());
 
         return "user/checkout";
     }
 
     @PostMapping("/makeOrder")
-    public String makeOrder(@ModelAttribute("")OrderCustomer orderCustomer){
-        System.out.println(orderCustomer.getCustomer().toString());
-        orderService.completeOrder(orderCustomer.getOrder());
+    public String makeOrder(@ModelAttribute("")Order order){
+        orderService.completeOrder(order);
         return "redirect:/main"; //кидаем url
     }
 }
