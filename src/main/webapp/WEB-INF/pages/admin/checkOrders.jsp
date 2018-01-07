@@ -43,15 +43,29 @@
                         <div class="table-goods__info item-payment"><p>${order.payment}</p></div>
                         <div class="table-goods__info item-delivery"><p>${order.delivery}</p></div>
                         <select name="product" class="table-goods__info item-products">
-                            <c:forEach items="${product}" var="product">
+                            <option selected disabled hidden>Список товаров</option>
+                            <c:forEach items="${productInOrder}" var="productInOrder">
                                 <c:choose>
-                                    <c:when test="${product.id == 1}">
-                                        <option>${product.name}</option>
+                                    <c:when test="${order.id == productInOrder.order.id}">
+                                        <c:forEach items="${product}" var="product">
+                                            <c:choose>
+                                                <c:when test="${product.id == productInOrder.product.id}">
+                                                    <option disabled>${product.name}</option>
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
                                     </c:when>
                                 </c:choose>
                             </c:forEach>
                         </select>
-
+                        <form action="setOrderStatus/${order.id}" method="post" class="table-goods__info item-products">
+                            <select name="status" onchange="this.form.submit()">
+                                <option selected disabled hidden>${order.status}</option>
+                                <option value="В пути">В пути</option>
+                                <option value="Готово">Готово</option>
+                                <option value="Отменено">Отменено</option>
+                            </select>
+                        </form>
                     </div>
                 </c:forEach>
             </div>

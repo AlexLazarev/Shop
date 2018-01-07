@@ -41,7 +41,7 @@
                     <div class="sg-info_img">
                         <div class="sg-info_img__img"></div>
                         <div class="sg-info_img__text">
-                            <p class="sg-text">Это описание товара. Здесь вы можете рассказать о товаре подробнее: напишите о размерах, материалах, уходе и любых других важных моментах.</p>
+                            <p class="sg-text">${product.description}</p>
                         </div>
                     </div>
                     <div class="sg-info_description">
@@ -63,11 +63,14 @@
                         </div>
                         <div class="sg-info_description__detailinfo sg-box">
                             <h3 class="sg-di_title">О товаре</h3>
-                            <p class="sg-text">Это информация о товаре. Расскажите подробно, что он из себя представляет, и перечислите всю необходимую информацию: размеры, материалы, инструкции по уходу и т. д. Это также хорошая возможность сообщить, в чем особенность вашей продукции и какую выгоду покупатели получат в итоге. Подробные сведения о товаре помогут вашим посетителям определиться с покупкой.</p>
+                            <p class="sg-text">Тип: ${product.type} </p>
+                            <p class="sg-text">Пол: ${product.gender} </p>
+                            <p class="sg-text">Размер: ${product.size} </p>
+                            <p class="sg-text">Материал: ${product.material}</p>
                         </div>
                         <div class="sg-info_description__detailinfo sg-box">
                             <h3 class="sg-di_title">Политика возврата</h3>
-                            <p class="sg-text">Это правила и условия возврата товара и денег. Расскажите посетителям, что нужно сделать, если они захотят вернуть товар и получить назад свои деньги. Четкая и ясная политика возврата — это хороший способ построить доверительные отношения с клиентами.</p>
+                            <p class="sg-text">Товар возрврату не подлежит!=)</p>
                         </div>
                         <div class="sg-info_description__soc">
                             <i class="sg-info_description__link fa fa-twitter" aria-hidden="true"></i>

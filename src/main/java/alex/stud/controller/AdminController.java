@@ -7,10 +7,7 @@ import alex.stud.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -34,6 +31,7 @@ public class AdminController {
         model.addAttribute("user", userService.getAll());
         model.addAttribute("order",orderService.getAll());
         model.addAttribute("product",productService.getAll());
+        model.addAttribute("productInOrder", orderService.getAllProductInOrder());
         return "admin/checkOrders";
     }
 
@@ -42,5 +40,13 @@ public class AdminController {
         productService.save(product);
         return "redirect:/admin";
     }
+
+    @PostMapping("/setOrderStatus/{id}")
+    public String addToShoppingCart(@PathVariable("id")int id,@RequestParam("status") String status){
+        System.out.println(id + " Complete " + status);
+        orderService.setStatus(id,status);
+        return "redirect:/admin/checkOrders";
+    }
+
 
 }

@@ -9,6 +9,7 @@ import alex.stud.entity.ShoppingCart;
 import alex.stud.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,14 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.delete(id);
     }
 
+    @Transactional
+    public void setStatus(int id, String status) {
+        Order order = orderRepository.getOne(id);
+        order.setStatus(status);
+        orderRepository.save(order);
+    }
+
+    @Transactional
     public boolean completeOrder(Order order) {
         orderRepository.save(order);
 
@@ -55,6 +64,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getAll() {
         return  orderRepository.findAll();
+    }
+
+    @Override
+    public List<ProductInOrder> getAllProductInOrder() {
+        return productInOrderRepository.findAll();
     }
 
 }
