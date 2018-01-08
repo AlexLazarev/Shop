@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +45,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     public boolean completeOrder(Order order) {
+        order.setStatus("В обработке");
+        order.setDate(new Date());
         orderRepository.save(order);
 
         for (Map.Entry<Product, Integer> entry : shoppingCart.getAllProducts().entrySet()) {

@@ -36,12 +36,15 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .container { width: 980px; margin: 0 auto; }
 .container__admin {width: 1500px; margin: 0 auto; }
 .table-goods__header { padding-bottom: 10px; border-bottom: 1px solid #000; width: 100%; }
-
-.table-goods__title { width: 12%; display: inline-block; padding-right: 15px; word-wrap: break-word; }
-.table-goods__title:last-child { margin-right: 0 }
+.table-goods__header div:first-child {width: 4%; padding-right: 3px;}
+.table-goods__header div:last-child {width: auto; padding-left: 120px; padding-right: 0px;}
+.table-goods__title { width: 11%; display: inline-block; padding-right: 15px; word-wrap: break-word; }
 
 .table-goods__item { padding-top: 10px; }
-.table-goods__info { display: inline-block; padding-right: 15px; width: 12%; word-wrap: break-word; }
+.table-goods__item div:first-child { width: 4%; padding-right: 3px; }
+.table-goods__item form:last-child { width: auto; padding-left: 120px; padding-right: 0px; }
+.table-goods__info { display: inline-block; padding-right: 15px; width: 11%; word-wrap: break-word; }
+
 
 .header { position: fixed; top: 0; right: 0; left: 0; width: 100%; background: #535151; padding: 31px 0 29px; z-index: 1; }
 .header-logo { float: left; }
@@ -189,6 +192,10 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .shop-goods__text, .sale-goods__text { font: normal normal normal 15px/18px "open sans", sans-serif; color: #303132; line-height: 25px; }
 
 .bold-title { font: normal normal bold 19px/1.4em "open sans", sans-serif; text-transform: uppercase; color: #303132; letter-spacing: 0.3em; }
+
+.sg-register__link { display: block; text-decoration: none; color: #371510; font-size: 15px; text-align: center; margin-top: 10px; }
+.sg-register__link.active { color: #ffffff; }
+
 
 .sg-text { line-height: 1.5; }
 

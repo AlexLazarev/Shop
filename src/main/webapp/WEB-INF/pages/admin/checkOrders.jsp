@@ -19,7 +19,8 @@
             </div>
             <div class="table-goods">
                 <div class="table-goods__header">
-                    <div class="table-goods__title"><p>#</p></div>
+                    <div class="table-goods__title number_title"><p>#</p></div>
+                    <div class="table-goods__title"><p>Дата</p></div>
                     <div class="table-goods__title"><p>ФИО</p></div>
                     <div class="table-goods__title"><p>Email</p></div>
                     <div class="table-goods__title"><p>Город</p></div>
@@ -30,7 +31,8 @@
                 </div>
                 <c:forEach items="${order}" var="order">
                     <div class="table-goods__item">
-                        <div class="table-goods__info item-name"><p>${order.id}</p></div>
+                        <div class="table-goods__info item-id"><p>${order.id}</p></div>
+                        <div class="table-goods__info item-date"><p>${order.date}</p></div>
                         <c:forEach items="${user}" var="user">
                             <c:choose>
                                 <c:when test="${order.idUser == user.id}">

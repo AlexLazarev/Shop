@@ -34,7 +34,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button class="sg-btn" type="submit">Log In</button>
-            <h4 class="form-control"><a href="register">Create an account</a></h4>
+            <a class="sg-register__link" href="register">Create an account</a>
         </div>
     </form>
 

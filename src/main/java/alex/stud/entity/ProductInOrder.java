@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="ProductInOrder")
 public class ProductInOrder {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private int quantity;

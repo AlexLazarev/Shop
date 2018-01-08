@@ -1,6 +1,8 @@
 package alex.stud.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,6 +13,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int idUser;
+    @Temporal(TemporalType.DATE)
+    private Date date;
     private String city;
     private String delivery;
     private String payment;
@@ -78,4 +82,13 @@ public class Order {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
 }

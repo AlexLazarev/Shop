@@ -29,7 +29,7 @@
             <div class="bottom-content">
                 <div class="separator">
                     <div class="container default-box">
-                        <p class="separator__text">Бесплатная доставка по Украине</p>
+                        <p class="separator__text">Бесплатная доставка по Украине(нет)</p>
                     </div>
                 </div>
                 <div class="container default-box">
@@ -41,7 +41,7 @@
                     <div class="goods">
                         <div class="goods-box">
                             <div class="goods-name">
-                                <p class="goods-box__text font-Arial">Юбка миди</p>
+                                <p class="goods-box__text font-Arial">Чет крутое</p>
                             </div>
                         </div>
                         <div class="goods-box2">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="goods-box">
                             <div class="goods-name">
-                                <p class="goods-box__text font-Arial">Юбка миди</p>
+                                <p class="goods-box__text font-Arial">Круче чем слева</p>
                             </div>
                         </div>
                     </div>

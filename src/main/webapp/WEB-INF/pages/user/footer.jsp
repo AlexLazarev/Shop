@@ -38,12 +38,12 @@
             </div>
             <div class="footer-info__box">
                 <p class="footer-info__title">Нужна помощь?</p>
-                <p class="footer-info__text">+7 (495) 000-00-00</p>
-                <a href="#" class="footer-info__text">info@mysite.ru</a>
+                <p class="footer-info__text">095 948 21 44</p>
+                <a href="#" class="footer-info__text">youtube</a>
             </div>
         </div>
         <div class="bottom-ftr text-center">
-            <p class="bottom-ftr__text">© 2023 МАГАЗИН ЖЕНСКОЙ ОДЕЖДЫ «FLO».</p>
+            <p class="bottom-ftr__text">© 2023 МАГАЗИН ОДЕЖДЫ «FLO».</p>
         </div>
     </div>
 </footer>
