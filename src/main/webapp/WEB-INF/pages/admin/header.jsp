@@ -13,14 +13,11 @@
         </div>
         <ul class="header-navlist">
             <li class="header-navlist__item"><a class="header-navlist__link" href="main">Главная</a></li>
-            <li class="header-navlist__item"><a class="header-navlist__link" href="shop">Магазин</a></li>
-            <li class="header-navlist__item"><a class="header-navlist__link" href="#">Распродажа</a></li>
-            <li class="header-navlist__item"><a class="header-navlist__link" href="#">Помощь покупателям</a></li>
-            <li class="header-navlist__item"><a class="header-navlist__link" href="#">Адреса</a></li>
+            <li class="header-navlist__item"><a class="header-navlist__link" href="addProduct">Товар</a></li>
+            <li class="header-navlist__item"><a class="header-navlist__link" href="checkOrders">Заказы</a></li>
+            <li class="header-navlist__item"><a class="header-navlist__link" href="addProducer">Поставщики</a></li>
+            <li class="header-navlist__item"><a class="header-navlist__link" href="#">Поставка</a></li>
         </ul>
-        <div class="header-rbcount">
-            <i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
-        </div>
     </div>
     <div class="header-acc">
         <i class="header-acc__user fa fa-user-circle fa-lg" aria-hidden="true"></i>

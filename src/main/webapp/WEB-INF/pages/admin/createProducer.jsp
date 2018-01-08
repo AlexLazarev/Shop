@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -26,15 +28,31 @@
                             <p class="register-body__text big-padding">Вы можете добавить поставщика с помощью данных полей</p>
                         </div>
                         <div class="register-body__form">
-                            <form action="addProducer" method="post">
-                                <p class="register-body__text">ФИО</p>
-                                <input class="register-body__input" type="text" name="name">
-                                <p class="register-body__text">Номер</p>
-                                <input class="register-body__input" type="text" name="number">
-                                <p class="register-body__text">Адрес</p>
-                                <input class="register-body__input" type="text" name="address">
+                            <form:form action="addProducer" modelAttribute="producer" method="post">
+
+                                <spring:bind path="name">
+                                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                                        <form:input type="text" path="name" class="form-control" placeholder="Name"></form:input>
+                                        <form:errors path="name"></form:errors>
+                                    </div>
+                                </spring:bind>
+
+                                <spring:bind path="number">
+                                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                                        <form:input type="text" path="number" class="form-control" placeholder="Number"></form:input>
+                                        <form:errors path="number"></form:errors>
+                                    </div>
+                                </spring:bind>
+
+                                <spring:bind path="address">
+                                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                                        <form:input type="text" path="address" class="form-control" placeholder="Address"></form:input>
+                                        <form:errors path="address"></form:errors>
+                                    </div>
+                                </spring:bind>
+
                                 <input type="submit" value="Добавить поставщика">
-                                </form>
+                                </form:form>
                         </div>
                     </div>
                 </div>

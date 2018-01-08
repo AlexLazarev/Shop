@@ -21,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"alex.stud.entity","alex.stud.service", "alex.stud.validator"})
+@ComponentScan(basePackages = {"alex.stud.entity","alex.stud.service", "alex.stud.validator", "alex.stud.session"})
 @EnableJpaRepositories(basePackages = {"alex.stud.dao"})
 @PropertySource(value = "classpath:application.properties")
 public class SpringConfig {

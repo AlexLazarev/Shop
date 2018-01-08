@@ -45,6 +45,7 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .table-goods__item form:last-child { width: auto; padding-left: 120px; padding-right: 0px; }
 .table-goods__info { display: inline-block; padding-right: 15px; width: 11%; word-wrap: break-word; }
 
+.table {margin-top: 120px}
 
 .header { position: fixed; top: 0; right: 0; left: 0; width: 100%; background: #535151; padding: 31px 0 29px; z-index: 1; }
 .header-logo { float: left; }

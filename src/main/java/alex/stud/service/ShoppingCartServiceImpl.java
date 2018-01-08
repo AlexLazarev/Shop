@@ -1,7 +1,7 @@
 package alex.stud.service;
 
 import alex.stud.entity.Product;
-import alex.stud.entity.ShoppingCart;
+import alex.stud.session.ShoppingCart;
 import alex.stud.service.interfaces.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +20,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         shoppingCart.addProduct(product,quantity);
     }
 
+    @Override
+    public void deleteProduct(int id) {
+        shoppingCart.deleteProduct(id);
+    }
+
     public List<Product> getProducts() {
         List<Product> products = new ArrayList<>();
         for (Map.Entry<Product,Integer> entry : shoppingCart.getAllProducts().entrySet()) {
@@ -31,7 +36,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public int getResultPrice() {
         int sum = 0;
         for (Map.Entry<Product,Integer> entry : shoppingCart.getAllProducts().entrySet()) {
-            sum += entry.getKey().getPrice();
+            sum += entry.getKey().getPrice() * entry.getValue();
         }
         return sum;
     }

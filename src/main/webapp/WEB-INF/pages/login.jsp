@@ -26,7 +26,6 @@
     <form method="POST" action="/login" class="form-signin">
         <h2 class="form-signin-heading">Login</h2>
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
             <input name="username" type="text" class="form-control" placeholder="Username"
                    autofocus="true"/>
             <input name="password" type="password" class="form-control" placeholder="Password"/>

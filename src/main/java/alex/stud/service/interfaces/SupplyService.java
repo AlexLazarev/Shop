@@ -9,6 +9,7 @@ import java.util.List;
 public interface SupplyService {
     List<Producer> getAllProducer();
     List<Supply> getAllSupply();
+    Producer findByName(String name);
     void addProducer(Producer producer);
     void save(Supply supply);
 }

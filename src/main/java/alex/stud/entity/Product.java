@@ -19,6 +19,8 @@ public class Product{
     private String material;
     private String description;
 
+    @ManyToOne
+    private Supply supply;
 
     @OneToMany(mappedBy = "product")
     private List<ProductInOrder> productInOrders;
@@ -117,5 +119,13 @@ public class Product{
                 ", material='" + material + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public Supply getSupply() {
+        return supply;
+    }
+
+    public void setSupply(Supply supply) {
+        this.supply = supply;
     }
 }

@@ -7,9 +7,11 @@ import alex.stud.service.interfaces.OrderService;
 import alex.stud.service.interfaces.SupplyService;
 import alex.stud.service.interfaces.ProductService;
 import alex.stud.service.interfaces.UserService;
+import alex.stud.validator.ProducerValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -19,6 +21,7 @@ import java.util.Date;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
     @Autowired
     private UserService userService;
 
@@ -31,14 +34,23 @@ public class AdminController {
     @Autowired
     private SupplyService supplyService;
 
+    @Autowired
+    private ProducerValidator producerValidator;
+
     @GetMapping("")
     public String admin() {
-        return "admin/admin";
+        return "redirect:/admin/checkOrders";
+    }
+
+    @GetMapping("/main")
+    public String main(){
+        return "redirect:/main";
     }
 
     @GetMapping("/addProduct")
     public  String createProduct(Model model){
         model.addAttribute("supply", supplyService.getAllSupply());
+        //model.addAttribute("success", "Successful!");
         return "admin/createProduct";
     }
 
@@ -49,12 +61,19 @@ public class AdminController {
     }
 
     @GetMapping("/addProducer")
-    public String createProducer(){
+    public String createProducer(Model model){
+        model.addAttribute("producer", new Producer());
         return "admin/createProducer";
     }
 
     @PostMapping("/addProducer")
-    public String addProducer(@ModelAttribute("")Producer producer){
+    public String addProducer(@ModelAttribute("producer")Producer producer, BindingResult bindingResult) {
+        producerValidator.validate(producer, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "admin/createProducer";
+        }
+
         supplyService.addProducer(producer);
         return "redirect:/admin/addProducer";
     }

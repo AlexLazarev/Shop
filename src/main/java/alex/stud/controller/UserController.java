@@ -63,10 +63,11 @@ public class UserController {
 
     @GetMapping(value = {"/","/main"})
     public String start(Model model){
-        model.addAttribute("shoppingCart", shoppingCart.getProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
         return "user/main";
     }
+
     @GetMapping("/error_page")
     public String error(){
         return "errorPage";
@@ -76,7 +77,7 @@ public class UserController {
     @GetMapping("/selected/{id}")
     public String selectedID(@PathVariable("id") int id, Model model){
         model.addAttribute("product",productService.getById(id));
-        model.addAttribute("shoppingCart", shoppingCart.getProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
         return "user/selected";
     }
@@ -97,7 +98,7 @@ public class UserController {
     @GetMapping("/shop")
     public String shop(Model model){
         model.addAttribute("products", productService.getAll());
-        model.addAttribute("shoppingCart", shoppingCart.getProducts());
+        model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
         return "user/shop";
     }
@@ -116,5 +117,13 @@ public class UserController {
     public String makeOrder(@ModelAttribute("")Order order){
         orderService.completeOrder(order);
         return "redirect:/main"; //кидаем url
+    }
+
+    //TODO: удаление с корзины
+    @RequestMapping("/remove/{id}")
+    public String removeBook(@PathVariable("id")int id){
+        System.out.println(id);
+        shoppingCart.deleteProduct(id);
+        return "redirect:/checkout";
     }
 }

@@ -29,6 +29,11 @@ public class SupplyServiceImpl implements SupplyService {
     }
 
     @Override
+    public Producer findByName(String name) {
+        return producerRepository.findByName(name);
+    }
+
+    @Override
     public void addProducer(Producer producer) {
         producerRepository.save(producer);
     }

@@ -5,7 +5,7 @@ import alex.stud.dao.ProductInOrderRepository;
 import alex.stud.entity.Order;
 import alex.stud.entity.Product;
 import alex.stud.entity.ProductInOrder;
-import alex.stud.entity.ShoppingCart;
+import alex.stud.session.ShoppingCart;
 import alex.stud.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

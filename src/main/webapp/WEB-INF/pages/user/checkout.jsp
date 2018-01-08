@@ -73,7 +73,7 @@
                                     <div class="checkout-goods__di">
                                         <p> ${product.key.name}</p>
                                         <p class="grey">Артикул: 0011</p>
-                                        <a href="#">Удалить</a>
+                                        <a href="/remove/${product.key.id}">Удалить</a>
                                     </div>
                                     <ul class="checkout-goods__price">
                                         <li><p>${product.key.price}</p></li>
