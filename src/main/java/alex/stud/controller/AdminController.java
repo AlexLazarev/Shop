@@ -8,12 +8,14 @@ import alex.stud.service.interfaces.SupplyService;
 import alex.stud.service.interfaces.ProductService;
 import alex.stud.service.interfaces.UserService;
 import alex.stud.validator.ProducerValidator;
+import alex.stud.validator.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,6 +39,9 @@ public class AdminController {
     @Autowired
     private ProducerValidator producerValidator;
 
+    @Autowired
+    private ProductValidator productValidator;
+
     @GetMapping("")
     public String admin() {
         return "redirect:/admin/checkOrders";
@@ -47,18 +52,30 @@ public class AdminController {
         return "redirect:/main";
     }
 
+    //Product
+
     @GetMapping("/addProduct")
     public  String createProduct(Model model){
-        model.addAttribute("supply", supplyService.getAllSupply());
-        //model.addAttribute("success", "Successful!");
+        model.addAttribute("product",new Product());
+        model.addAttribute("supplies", supplyService.getAllSupply());
         return "admin/createProduct";
     }
 
     @PostMapping("/addProduct")
-    public String addProduct(@ModelAttribute("")Product product){ //@ModelAttribute("customer")
+    public String addProduct(@ModelAttribute("product") Product product,BindingResult bindingResult, Model model){
+        model.addAttribute("supplies",supplyService.getAllSupply()); //TODO:норма это или нет, но костыли еще никто не отменял
+        productValidator.validate(product,bindingResult);
+
+        if(bindingResult.hasErrors()){
+
+            return "admin/createProduct";
+        }
+
         productService.save(product);
         return "redirect:/admin/addProduct";
     }
+
+    //ProducER
 
     @GetMapping("/addProducer")
     public String createProducer(Model model){
@@ -94,7 +111,7 @@ public class AdminController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        //да это надо делать не в контролере, да это вообще не надо делать. явно есть способ получше
+        //TODO:да это надо делать не в контролере, да это вообще не надо делать. явно есть способ получше
 
         supplyService.save(supply);
         return "redirect:/admin/addSupply";

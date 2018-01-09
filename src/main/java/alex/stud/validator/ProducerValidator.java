@@ -33,13 +33,17 @@ public class ProducerValidator implements Validator {
         }
 
         //TODO: number is number
-
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "number", "required");
+        if (    !producer.getNumber().matches("\\d{10,12}") &&
+                !producer.getNumber().matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}")){
+                errors.rejectValue("number", "producer.number.NotNumber");
+        }
 
         if (producer.getNumber().length() < 10 || producer.getNumber().length() > 13) {
             errors.rejectValue("number", "producer.number.size");
         }
 
-
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"address","required");
         if (producer.getAddress().length() < 8 || producer.getAddress().length() > 32) {
             errors.rejectValue("address", "producer.address.size");
         }

@@ -47,6 +47,7 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 
 .table {margin-top: 120px}
 
+
 .header { position: fixed; top: 0; right: 0; left: 0; width: 100%; background: #535151; padding: 31px 0 29px; z-index: 1; }
 .header-logo { float: left; }
 .header-navlist { float: left; }
@@ -305,9 +306,6 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
     margin-top: 10px;
 }
 
-.has-error {
-    color: red
-}
 
 
 .form-control {
@@ -360,6 +358,12 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 
 textarea.form-control {
     height: auto
+}
+
+
+.has-error {
+    -webkit-box-shadow: inset 0 1px 1px rgba(199, 6, 6, 0.07), 0 0 8px rgba(199, 6, 6, 0.6);
+    box-shadow: inset 0 1px 1px rgba(199, 6, 6, 0.07), 0 0 8px rgba(212, 0, 0, 0.54)
 }
 
 

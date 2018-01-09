@@ -1,4 +1,9 @@
-1. quantity without additional model (Controller)
-2. compulsory registration
-3. add another entity...
-4. security (if i have time)
+6.add list supply and producer
+7. make functionional for liking
+
+
+problems:
+
+1. UTF-8 hibernate
+	? SpringConfig @Bean getProperties();
+	? application.prop datasource.url add ..?+++ 

@@ -26,6 +26,14 @@ public class Service {
     private OrderService orderService;
 
     @Test
+    public void testPrice(){
+        Product product = new Product();
+        if (product.getPrice() != null && !product.getPrice().toString().matches("\\d{1,9}")) {
+            System.out.println("error");
+        }
+    }
+
+    @Test
     public void testDate(){
         System.out.println(new Date() + "/n");
         System.out.println(Calendar.getInstance(TimeZone.getTimeZone("UTC")));

@@ -33,52 +33,52 @@
                                 <h2 class="form-signin-heading">Create your account</h2>
 
                                 <spring:bind path="firstName">
-                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                        <form:input type="text" path="firstName" class="form-control" placeholder="Name"
+                                    <div class="form-group">
+                                        <form:input type="text" path="firstName" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Name"
                                                     autofocus="true"></form:input>
                                         <form:errors path="firstName"></form:errors>
                                     </div>
                                 </spring:bind>
 
                                 <spring:bind path="lastName">
-                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                        <form:input type="text" path="lastName" class="form-control" placeholder="Surname"></form:input>
+                                    <div class="form-group">
+                                        <form:input type="text" path="lastName" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Surname"></form:input>
                                         <form:errors path="lastName"></form:errors>
                                     </div>
                                 </spring:bind>
 
 
                                 <spring:bind path="number">
-                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                        <form:input type="text" path="number" class="form-control" placeholder="Number"></form:input>
+                                    <div class="form-group">
+                                        <form:input type="text" path="number" class="form-control  ${status.error ? 'has-error' : ''}" placeholder="Number"></form:input>
                                         <form:errors path="number"></form:errors>
                                     </div>
                                 </spring:bind>
 
                                 <spring:bind path="email">
-                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                        <form:input type="text" path="email" class="form-control" placeholder="Email"></form:input>
+                                    <div class="form-group">
+                                        <form:input type="email" path="email" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Email"></form:input>
                                         <form:errors path="email"></form:errors>
                                     </div>
                                 </spring:bind>
 
                                 <spring:bind path="username">
-                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                        <form:input type="text" path="username" class="form-control" placeholder="Username"></form:input>
+                                    <div class="form-group">
+                                        <form:input type="text" path="username" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Username"></form:input>
                                         <form:errors path="username"></form:errors>
                                     </div>
                                 </spring:bind>
 
                                 <spring:bind path="password">
-                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                        <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
+                                    <div class="form-group">
+                                        <form:input type="password" path="password" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Password"></form:input>
                                         <form:errors path="password"></form:errors>
                                     </div>
                                 </spring:bind>
 
                                 <spring:bind path="confirmPassword">
-                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                        <form:input type="password" path="confirmPassword" class="form-control"
+                                    <div class="form-group">
+                                        <form:input type="password" path="confirmPassword" class="form-control ${status.error ? 'has-error' : ''}"
                                                     placeholder="Confirm your password"></form:input>
                                         <form:errors path="confirmPassword"></form:errors>
                                     </div>

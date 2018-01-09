@@ -12,8 +12,9 @@ public class Product{
     private int id;
     private String type;
     private String name;
-    private int price;
-    private int quantity;
+
+    private Integer price;
+    private Integer quantity;
     private String gender;
     private String size;
     private String material;
@@ -34,11 +35,11 @@ public class Product{
         this.name = name;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -66,11 +67,11 @@ public class Product{
         this.type = type;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
