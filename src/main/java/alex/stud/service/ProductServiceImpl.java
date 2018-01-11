@@ -1,9 +1,14 @@
 package alex.stud.service;
 
 import alex.stud.dao.ProductRepository;
+import alex.stud.dao.RatingRepository;
+import alex.stud.dao.UserRepository;
 import alex.stud.entity.Product;
+import alex.stud.entity.Rating;
 import alex.stud.service.interfaces.ProductService;
+import alex.stud.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +23,11 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private RatingRepository ratingRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
    public List<Product> getAll() {
         return productRepository.findAll();
@@ -26,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
-    public Product getById(int id) {
+    public Product getProduct(int id) {
         return productRepository.findOne(id);
     }
 
@@ -38,6 +48,13 @@ public class ProductServiceImpl implements ProductService {
         productRepository.delete(id);
     }
 
+    public void rate(Product product, int mark) {
+       Rating rating = new Rating();
+       rating.setMark(mark);
+       rating.setUser(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+       rating.setProduct(product);
+       ratingRepository.save(rating);
+    }
 
 
 }

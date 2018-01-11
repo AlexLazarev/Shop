@@ -28,7 +28,7 @@
                             <p class="register-body__text big-padding">Вы можете добавить товар с помощью данных полей</p>
                         </div>
                         <div class="register-body__form">
-                            <form:form modelAttribute="product" method="post">
+                            <form:form modelAttribute="product" method="post" action="/admin/addProducer">
 
                                 <spring:bind path="type">
                                     <div class="form-group">
@@ -75,6 +75,15 @@
                                         <option value="XXL">XXL</option>
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <select name="supply.id" class="form-control">
+                                        <c:forEach items="${supplies}" var="supply">
+                                            <option value="${supply.id}">${supply.producer.name} — ${supply.date}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
                                 <spring:bind path="material">
                                     <div class="form-group">
                                         <form:input type="text" path="material" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Material"></form:input>
@@ -84,18 +93,10 @@
 
                                 <spring:bind path="description">
                                     <div class="form-group">
-                                        <form:textarea path="description" cols="30" rows="10" class="form-control"></form:textarea>
+                                        <form:textarea path="description" cols="30" rows="10" class="form-control" placeholder="Description..."></form:textarea>
                                         <form:errors path="description"></form:errors>
                                     </div>
                                 </spring:bind>
-
-                                <div class="form-group">
-                                    <select name="supply.id" class="form-control">
-                                        <c:forEach items="${supplies}" var="supply">
-                                            <option value="${supply.id}">${supply.producer.name} — ${supply.date}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
 
                                 <input type="submit" value="Добавить товар">
                                 </form:form>

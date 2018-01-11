@@ -44,7 +44,7 @@ public class AdminController {
 
     @GetMapping("")
     public String admin() {
-        return "redirect:/admin/checkOrders";
+        return "redirect:/admin/checkProducers";
     }
 
     @GetMapping("/main")
@@ -77,7 +77,13 @@ public class AdminController {
 
     //ProducER
 
-    @GetMapping("/addProducer")
+    @GetMapping("/checkProducers")
+    public String checkProducers(Model model){
+        model.addAttribute("producers", supplyService.getAllProducer());
+        return "admin/checkProducers";
+    }
+
+    @GetMapping("/checkProducers/addProducer")
     public String createProducer(Model model){
         model.addAttribute("producer", new Producer());
         return "admin/createProducer";
@@ -85,16 +91,41 @@ public class AdminController {
 
     @PostMapping("/addProducer")
     public String addProducer(@ModelAttribute("producer")Producer producer, BindingResult bindingResult) {
+        System.out.println("Controller" + producer.toString());
         producerValidator.validate(producer, bindingResult);
-
         if (bindingResult.hasErrors()) {
             return "admin/createProducer";
         }
-
         supplyService.addProducer(producer);
-        return "redirect:/admin/addProducer";
+        return "redirect:/admin/checkProducers";
     }
 
+    @GetMapping("/checkProducers/updateProducer-{id}")
+    public String updateProducer(@PathVariable("id") int id, Model model){
+        model.addAttribute("producer", supplyService.getProducer(id));
+        return "admin/updateProducer";
+    }
+
+    @PostMapping("/updateProducer")
+    public String updateProducerComplete(@ModelAttribute("producer")Producer producer, BindingResult bindingResult) {
+        System.out.println("Controller" + producer.toString());
+        producerValidator.validate(producer, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "admin/updateProducer";
+        }
+        supplyService.addProducer(producer);
+        return "redirect:/admin/checkProducers";
+    }
+
+    @GetMapping("/checkProducers/delete{id}")
+    public String removeProducer(@PathVariable("id") int id){
+        supplyService.deleteProducer(id);
+        return "redirect:/admin/checkProducers";
+    }
+
+
+
+    //Supply
     @GetMapping("/addSupply")
     public String createSupply(Model model) {
         model.addAttribute("producers",supplyService.getAllProducer());
@@ -117,7 +148,7 @@ public class AdminController {
         return "redirect:/admin/addSupply";
     }
 
-
+    //Orders
     @GetMapping("/checkOrders")
     public String adminCheckOrders(Model model) {
         model.addAttribute("user", userService.getAll());
@@ -134,5 +165,10 @@ public class AdminController {
         return "redirect:/admin/checkOrders";
     }
 
+    @GetMapping("/checkOrders/delete{id}")
+    public String removeOrder(@PathVariable("id") int id){
+        orderService.delete(id);
+        return "redirect:/admin/checkProducers";
+    }
 
 }

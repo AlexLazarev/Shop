@@ -44,4 +44,16 @@ public class Producer {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Producer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
+
 }

@@ -7,6 +7,7 @@ import alex.stud.entity.Supply;
 import alex.stud.service.interfaces.SupplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -41,5 +42,18 @@ public class SupplyServiceImpl implements SupplyService {
     @Override
     public void save(Supply supply) {
         supplyRepository.save(supply);
+    }
+
+    @Override
+    public void deleteProducer(int id) {
+        producerRepository.delete(id);
+    }
+
+    @Override
+    @Transactional
+    public Producer getProducer(int id) {
+        Producer producer = producerRepository.findOne(id);
+        System.out.println("Service" + producer.toString());
+        return producer;
     }
 }

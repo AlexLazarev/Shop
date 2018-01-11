@@ -25,10 +25,12 @@
                     <div class="register-body">
                         <div class="register-body__info">
                             <p class="register-body__boldtext">Описание</p>
-                            <p class="register-body__text big-padding">Вы можете добавить поставщика с помощью данных полей</p>
+                            <p class="register-body__text big-padding">Вы можете обновить поставщика с помощью данных полей</p>
                         </div>
                         <div class="register-body__form">
-                            <form:form modelAttribute="producer" method="post" action="/admin/addProducer">
+                            <form:form modelAttribute="producer" method="post" action="/admin/updateProducer">
+                                <form:hidden path="id" value="${producer.id}"/>
+
                                 <spring:bind path="name">
                                     <div class="form-group">
                                         <form:input type="text" path="name" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Name"></form:input>
@@ -49,7 +51,7 @@
                                         <form:errors path="address"></form:errors>
                                     </div>
                                 </spring:bind>
-                                <input type="submit" value="Добавить поставщика">
+                                <input type="submit" value="Обновить поставщика">
                                 </form:form>
                         </div>
                     </div>

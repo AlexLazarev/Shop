@@ -46,7 +46,7 @@
                             <div class="table-goods__info item-city"><p>${order.city}</p></div>
                             <div class="table-goods__info item-payment"><p>${order.payment}</p></div>
                             <div class="table-goods__info item-delivery"><p>${order.delivery}</p></div>
-                            <select name="product" class="table-goods__info item-products">
+                            <select name="product" class="table-goods__info">
                                 <option selected disabled hidden>Список товаров</option>
                                 <c:forEach items="${productInOrder}" var="productInOrder">
                                     <c:choose>
@@ -62,14 +62,17 @@
                                     </c:choose>
                                 </c:forEach>
                             </select>
-                            <form action="setOrderStatus/${order.id}" method="post" class="table-goods__info item-products">
-                                <select name="status" onchange="this.form.submit()">
+                            <form action="setOrderStatus/${order.id}" method="post" class="table-goods__info">
+                                <select name="status"  class="item-status" onchange="this.form.submit()">
                                     <option selected disabled hidden>${order.status}</option>
                                     <option value="В пути">В пути</option>
                                     <option value="Готово">Готово</option>
                                     <option value="Отменено">Отменено</option>
                                 </select>
                             </form>
+                            <a href="checkOrders/delete${order.id}" class="button-delete">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </c:forEach>
                 </div>

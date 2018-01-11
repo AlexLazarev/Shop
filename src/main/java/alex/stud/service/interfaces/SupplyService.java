@@ -12,4 +12,7 @@ public interface SupplyService {
     Producer findByName(String name);
     void addProducer(Producer producer);
     void save(Supply supply);
+    void deleteProducer(int id);
+    Producer getProducer(int id);
+
 }

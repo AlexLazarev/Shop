@@ -52,10 +52,20 @@
                                     <p class="sg-vendorcode">Артикул: 005</p>
                                     <p class="sg-price">${product.price} грн.</p>
                                     <div class="sg-input">
+                                        <p class="sg-input_count">Оценка</p>
+                                        <form action="setMark/${order.id}" method="post" class="table-goods__info item-products">
+                                            <select name="status" value = "5" onchange="this.form.submit()">
+                                                <option selected disabled hidden>${order.status}</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </form>
+
                                         <p class="sg-input_count">Количество</p>
                                         <input name="quantity" value="1" ref="count" type="text">
-                                        <span class="sg-input_up"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
-                                        <span class="sg-input_down"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                                     </div>
                                     <button class="sg-btn">Добавить в корзину</button>
                                 </form>

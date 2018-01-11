@@ -15,4 +15,5 @@ public interface OrderService {
     List<Order> getAllByIdUser(int id);
     List<Order> getAll();
     List<ProductInOrder> getAllProductInOrder();
+    void delete(int id);
 }

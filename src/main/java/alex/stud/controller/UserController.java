@@ -76,22 +76,21 @@ public class UserController {
 
     @GetMapping("/selected/{id}")
     public String selectedID(@PathVariable("id") int id, Model model){
-        model.addAttribute("product",productService.getById(id));
+        model.addAttribute("product",productService.getProduct(id));
         model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
         return "user/selected";
     }
 
-
-    @GetMapping("shop/{id}")
-    public String getProductById(@PathVariable("id")int id, Model model){
-        model.addAttribute("product",productService.getById(id));
-        return "user/selected";
-    }
-
     @PostMapping("/addToShoppingCart/{id}")
     public String addToShoppingCart(@PathVariable("id")int id,@RequestParam("quantity") int quantity){
-    shoppingCart.addProduct(productService.getById(id),quantity);
+        shoppingCart.addProduct(productService.getProduct(id),quantity);
+        return "redirect:/shop";
+    }
+
+    @PostMapping("/addMark/{id}")
+    public String addMark(@PathVariable("id")int id, @RequestParam("mark")int mark){
+        productService.rate(productService.getProduct(id), mark);
         return "redirect:/shop";
     }
 
