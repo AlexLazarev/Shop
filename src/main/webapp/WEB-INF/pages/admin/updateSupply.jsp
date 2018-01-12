@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -23,18 +24,21 @@
                     <div class="register-body">
                         <div class="register-body__info">
                             <p class="register-body__boldtext">Описание</p>
-                            <p class="register-body__text big-padding">Вы можете добавить поставку с помощью данных полей</p>
+                            <p class="register-body__text big-padding">Вы можете обновить поставку с помощью данных полей</p>
                         </div>
                         <div class="register-body__form">
-                            <form action="/admin/addSupply" method="post">
-                                <select name = "producer.id" class="checkout-contact__select">
+                            <form action="/admin/updateSupply" method="post">
+                                <input type="hidden" name="id" value="${supply.id}"/>
+
+                                <select name = "producer.id" value="${suppy.producer.id}" class="checkout-contact__select" >
+                                    <option selected disabled hidden>${supply.producer.name}</option>
                                     <c:forEach items="${producers}" var="producer">
                                         <option value="${producer.id}">${producer.name}</option>
                                     </c:forEach>
                                 </select>
-                                <p class="register-body__text">Дата</p>
-                                <input class="register-body__input" type="date" name="myDate">
-                                <input type="submit" value="Добавить поставщика">
+                                <p class="register-body__text">${supply.date.time}</p>
+                                <input class="register-body__input" type="date" value="${supply.date.time}">
+                                <input type="submit" value="Обновить поставку">
                             </form>
                         </div>
                     </div>

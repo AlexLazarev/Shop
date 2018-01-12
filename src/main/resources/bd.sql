@@ -10,5 +10,14 @@ FOR EACH ROW BEGIN
 UPDATE Product SET supply_id=Null WHERE supply_id = OLD.id;
 END;
 
+CREATE TRIGGER before_product_delete BEFORE DELETE ON Product
+  FOR EACH ROW BEGIN
+  DELETE FROM Rating WHERE product_id = OLD.id;
+  DELETE FROM ProductInOrder WHERE product_id = OLD.id;
+END;
 
+CREATE TRIGGER before_order_delete BEFORE DELETE ON MyOrder
+  FOR EACH ROW BEGIN
+  DELETE FROM ProductInOrder WHERE order_id = OLD.id;
+END;
 

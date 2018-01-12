@@ -79,11 +79,18 @@ public class UserController {
         model.addAttribute("product",productService.getProduct(id));
         model.addAttribute("shoppingCart", shoppingCart.getProductsWithQuantity());
         model.addAttribute("sum",shoppingCart.getResultPrice());
+        model.addAttribute("mark", String.format("%.1f", productService.getRating(id)));
         return "user/selected";
     }
 
     @PostMapping("/addToShoppingCart/{id}")
-    public String addToShoppingCart(@PathVariable("id")int id,@RequestParam("quantity") int quantity){
+    public String addToShoppingCart(@PathVariable("id")int id,
+                                    @RequestParam("quantity") int quantity,
+                                    @RequestParam(value = "mark",defaultValue = "0") int mark){
+        if (mark != 0) {
+            productService.rate(productService.getProduct(id), mark);
+        }
+        
         shoppingCart.addProduct(productService.getProduct(id),quantity);
         return "redirect:/shop";
     }
@@ -91,7 +98,7 @@ public class UserController {
     @PostMapping("/addMark/{id}")
     public String addMark(@PathVariable("id")int id, @RequestParam("mark")int mark){
         productService.rate(productService.getProduct(id), mark);
-        return "redirect:/shop";
+        return "redirect:/selected/" + id;
     }
 
     @GetMapping("/shop")

@@ -17,29 +17,29 @@
         <div class="container__producer">
             <div class="table">
                 <div class="register-title text-center">
-                    <h4 class="bold-title">Поставщики</h4>
+                    <h4 class="bold-title">Поставка</h4>
                 </div>
                 <div class="table-goods">
                     <div class="table-goods__header">
                         <div class="table-producer__title"><p>#</p></div>
                         <div class="table-producer__title"><p>ФИО</p></div>
-                        <div class="table-producer__title"><p>Адресс</p></div>
-                        <div class="table-producer__title"><p>Номер</p></div>
-                        <a href="checkProducers/addProducer" class="button-add">
+                        <div class="table-producer__title"><p>Товар</p></div>
+                        <div class="table-producer__title"><p>Дата</p></div>
+                        <a href="checkSupply/addSupply" class="button-add">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                         </a>
                        </div>
-                    <c:forEach items="${producers}" var="producer">
+                    <c:forEach items="${supply}" var="supply">
                     <div class="table-goods__item">
-                        <div class="table-producer__info item-id"><p>${producer.id}</p></div>
-                        <div class="table-producer__info item-name"><p>${producer.name}</p></div>
-                        <div class="table-producer__info item-adress"><p>${producer.address}</p></div>
-                        <div class="table-producer__info item-number"><p>${producer.number}</p></div>
+                        <div class="table-producer__info item-id"><p>${supply.id}</p></div>
+                        <div class="table-producer__info item-name"><p>${supply.producer.name}</p></div>
+                        <div class="table-producer__info item-adress"><p>${supply.producer.address}</p></div>
+                        <div class="table-producer__info item-number"><p>${supply.date}</p></div>
 
-                        <a href="checkProducers/update-${producer.id}" class="button-update">
+                        <a href="checkSupply/update-${supply.id}" class="button-update">
                             <i class="fa fa-refresh" aria-hidden="true"></i>
                         </a>
-                        <a href="checkProducers/delete-${producer.id}" class="button-delete">
+                        <a href="checkSupply/delete-${supply.id}" class="button-delete">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </a>
                     </c:forEach>

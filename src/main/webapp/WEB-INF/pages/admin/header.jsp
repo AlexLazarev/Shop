@@ -15,8 +15,8 @@
             <li class="header-navlist__item"><a class="header-navlist__link" href="main">Главная</a></li>
             <li class="header-navlist__item"><a class="header-navlist__link" href="addProduct">Товар</a></li>
             <li class="header-navlist__item"><a class="header-navlist__link" href="checkOrders">Заказы</a></li>
-            <li class="header-navlist__item"><a class="header-navlist__link" href="addProducer">Поставщики</a></li>
-            <li class="header-navlist__item"><a class="header-navlist__link" href="addSupply">Поставка</a></li>
+            <li class="header-navlist__item"><a class="header-navlist__link" href="checkProducers">Поставщики</a></li>
+            <li class="header-navlist__item"><a class="header-navlist__link" href="checkSupply">Поставка</a></li>
         </ul>
     </div>
     <div class="header-acc">

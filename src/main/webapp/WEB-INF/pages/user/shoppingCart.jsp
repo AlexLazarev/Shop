@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class='recyclebin-footer rb-border'>
-        <a href="checkout" class="recyclebin-footer_btn">Перейти в корзину</a>
+        <a href="/checkout" class="recyclebin-footer_btn">Перейти в корзину</a>
     </div>
 </div>
 

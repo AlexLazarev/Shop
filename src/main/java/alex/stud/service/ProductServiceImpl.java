@@ -56,5 +56,20 @@ public class ProductServiceImpl implements ProductService {
        ratingRepository.save(rating);
     }
 
+    @Override
+    public float getRating(int id) {
+        List<Rating> ratings = ratingRepository.findAllByProduct(productRepository.findOne(id));
+        if (ratings.size() == 0) {
+            return 0;
+        }
+
+        float sum = 0;
+        for (Rating rating : ratings) {
+            sum += rating.getMark();
+        }
+        System.out.println(sum);
+        return sum/ratings.size();
+    }
+
 
 }

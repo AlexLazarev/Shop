@@ -7,6 +7,7 @@ import alex.stud.service.interfaces.OrderService;
 import alex.stud.service.interfaces.SupplyService;
 import alex.stud.service.interfaces.ProductService;
 import alex.stud.service.interfaces.UserService;
+import alex.stud.util.Util;
 import alex.stud.validator.ProducerValidator;
 import alex.stud.validator.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ import java.util.Date;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+    @Autowired
+    private Util util;
 
     @Autowired
     private UserService userService;
@@ -75,7 +78,7 @@ public class AdminController {
         return "redirect:/admin/addProduct";
     }
 
-    //ProducER
+    //--Producer
 
     @GetMapping("/checkProducers")
     public String checkProducers(Model model){
@@ -100,7 +103,7 @@ public class AdminController {
         return "redirect:/admin/checkProducers";
     }
 
-    @GetMapping("/checkProducers/updateProducer-{id}")
+    @GetMapping("/checkProducers/update-{id}")
     public String updateProducer(@PathVariable("id") int id, Model model){
         model.addAttribute("producer", supplyService.getProducer(id));
         return "admin/updateProducer";
@@ -117,7 +120,7 @@ public class AdminController {
         return "redirect:/admin/checkProducers";
     }
 
-    @GetMapping("/checkProducers/delete{id}")
+    @GetMapping("/checkProducers/delete-{id}")
     public String removeProducer(@PathVariable("id") int id){
         supplyService.deleteProducer(id);
         return "redirect:/admin/checkProducers";
@@ -125,8 +128,15 @@ public class AdminController {
 
 
 
-    //Supply
-    @GetMapping("/addSupply")
+    //--Supply
+
+    @GetMapping("/checkSupply")
+    public String checkSupply(Model model){
+        model.addAttribute("supply", supplyService.getAllSupply());
+        return "admin/checkSupply";
+    }
+
+    @GetMapping("/checkSupply/addSupply")
     public String createSupply(Model model) {
         model.addAttribute("producers",supplyService.getAllProducer());
         return "admin/createSupply";
@@ -134,21 +144,38 @@ public class AdminController {
 
     @PostMapping("/addSupply")
     public String addSupply(@ModelAttribute("")Supply supply,@RequestParam("myDate")String date){
-        //без парсинга я хз, как получить дату с jsp. о_о
-        System.out.println(date);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            supply.setDate(format.parse(date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        //TODO:да это надо делать не в контролере, да это вообще не надо делать. явно есть способ получше
-
+        supply.setDate(util.formatDate(date));
         supplyService.save(supply);
-        return "redirect:/admin/addSupply";
+        return "redirect:/admin/checkSupply";
     }
 
-    //Orders
+
+    @GetMapping("/checkSupply/update-{id}")
+    public String updateSupply(@PathVariable("id") int id, Model model){
+        model.addAttribute("supply", supplyService.getSupply(id));
+        model.addAttribute("producers", supplyService.getAllProducer());
+
+        return "admin/updateSupply";
+    }
+
+    @PostMapping("/updateSupply")
+    public String updateSupplyComplete(@ModelAttribute("supply")Supply supply) {
+        System.out.println("Controller " + supply.toString());
+        supplyService.save(supply);
+        return "redirect:/admin/checkSupply";
+    }
+
+    @GetMapping("/checkSupply/delete-{id}")
+    public String removeSupply(@PathVariable("id") int id){
+        supplyService.delete(id);
+        return "redirect:/admin/checkSupply";
+    }
+
+
+
+
+
+    //--Orders
     @GetMapping("/checkOrders")
     public String adminCheckOrders(Model model) {
         model.addAttribute("user", userService.getAll());
@@ -168,7 +195,7 @@ public class AdminController {
     @GetMapping("/checkOrders/delete{id}")
     public String removeOrder(@PathVariable("id") int id){
         orderService.delete(id);
-        return "redirect:/admin/checkProducers";
+        return "redirect:/admin/checkOrders";
     }
 
 }

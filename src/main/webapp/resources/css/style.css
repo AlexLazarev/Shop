@@ -154,7 +154,7 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .recyclebin-header_title { color: #ffffff; font: normal normal normal 24px "open sans", sans-serif; }
 .recyclebin-header__back { position: absolute; left: 40px; top: calc(50% - 14px); color: #fff; }
 
-.recyclebin-info { height: 570px; overflow: auto; }
+.recyclebin-info { height: 400px; overflow: auto; }
 .recyclebin-info_box { padding: 25px 0; position: relative; border-bottom: 1px solid gray; display: flex; justify-content: space-between; }
 .recyclebin-info_box__img { flex: 2; }
 .recyclebin-info_box__img img { width: 80px; height: 80px; }

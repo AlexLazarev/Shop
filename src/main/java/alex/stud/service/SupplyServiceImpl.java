@@ -45,15 +45,30 @@ public class SupplyServiceImpl implements SupplyService {
     }
 
     @Override
+    public void delete(int id) {
+        supplyRepository.delete(id);
+    }
+
+    @Override
     public void deleteProducer(int id) {
         producerRepository.delete(id);
     }
 
+
+    //Суть и боль в том, что spring нам кидает прокси по запросу findOne(id), приходится изощрятся
     @Override
     @Transactional
     public Producer getProducer(int id) {
         Producer producer = producerRepository.findOne(id);
         System.out.println("Service" + producer.toString());
         return producer;
+    }
+
+    @Override
+    @Transactional
+    public Supply getSupply(int id) {
+        Supply supply = supplyRepository.getOne(id);
+        System.out.println("Service " + supply);
+        return supply;
     }
 }

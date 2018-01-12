@@ -28,14 +28,6 @@
                             <a class="sg-nav_list__link" href="#">Ваш товар</a>
                         </li>
                     </ul>
-                    <ul class="sg-nav_pn">
-                        <li class="sg-nav_pn__item">
-                            <a class="sg-nav_pn__link" href="${product.id-1}">Назад</a>
-                        </li>
-                        <li class="sg-nav_pn__item">
-                            <a class="sg-nav_pn__link" href="${product.id+1}">Вперед</a>
-                        </li>
-                    </ul>
                 </div>
                 <div class="sg-info">
                     <div class="sg-info_img">
@@ -53,16 +45,14 @@
                                     <p class="sg-price">${product.price} грн.</p>
                                     <div class="sg-input">
                                         <p class="sg-input_count">Оценка</p>
-                                        <form action="setMark/${order.id}" method="post" class="table-goods__info item-products">
-                                            <select name="status" value = "5" onchange="this.form.submit()">
-                                                <option selected disabled hidden>${order.status}</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </form>
+                                        <select name="mark" value="8">
+                                            <option value="7" selected disabled hidden>${mark}</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
 
                                         <p class="sg-input_count">Количество</p>
                                         <input name="quantity" value="1" ref="count" type="text">

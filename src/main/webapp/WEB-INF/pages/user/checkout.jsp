@@ -28,11 +28,11 @@
                             <form action="/makeOrder" method="post">
                                 <input type="hidden" value="${user.id}" name="idUser">
                                 <p class="checkout-contact__text">Имя</p>
-                                <input class="form-control" type="text" value="${user.firstName}" name="firstName">
+                                <input class="form-control" type="text" disabled value="${user.firstName}" name="firstName">
                                 <p class="checkout-contact__text">Фамилия</p>
-                                <input class="form-control" type="text" value="${user.lastName}" name="lastName">
+                                <input class="form-control" type="text" disabled value="${user.lastName}" name="lastName">
                                 <p class="checkout-contact__text">email</p>
-                                <input class="form-control" type="text" value="${user.email}" name="email">
+                                <input class="form-control" type="text" disabled value="${user.email}" name="email">
                                 <p class="checkout-contact__text">Город</p>
                                 <input class="form-control" type="text" name="city">
                                 <p class="checkout-contact__text">Способ доставки</p>

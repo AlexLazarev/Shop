@@ -37,6 +37,16 @@ public class Supply {
         return date;
     }
 
+    @Override
+    public String toString() {
+        return "Supply{" +
+                "id=" + id +
+                ", producer=" + producer +
+                ", date=" + date +
+                '}';
+
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }
