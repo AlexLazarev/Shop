@@ -52,6 +52,23 @@ input[type="submit"] { background-color: #303132; font: normal normal normal 13p
 .table-producer__item div:first-child { width: 16%; padding-right: 3px; }
 .table-producer__info { display: inline-block; padding-right: 15px; width: 28%; word-wrap: break-word; }
 
+
+.table-product__header { padding-bottom: 10px; border-bottom: 1px solid #000; width: 100%; }
+.table-product__header div:first-child {width: 17%; padding-right: 3px;}
+.table-product__title { width: 20%; display: inline-block; padding-right: 15px; word-wrap: break-word; }
+
+.table-product__item { padding-top: 10px; }
+.table-product__item div:first-child { width: 16%; padding-right: 3px; }
+.table-product__info { display: inline-block; padding-right: 15px; width: 20%; word-wrap: break-word; }
+
+
+
+
+
+
+
+
+
 .item-status { width: 100%;}
 
 .button-add    { color: #000; }

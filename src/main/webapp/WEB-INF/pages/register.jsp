@@ -57,7 +57,7 @@
 
                                 <spring:bind path="email">
                                     <div class="form-group">
-                                        <form:input type="email" path="email" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Email"></form:input>
+                                        <form:input type="text" path="email" class="form-control ${status.error ? 'has-error' : ''}" placeholder="Email"></form:input>
                                         <form:errors path="email"></form:errors>
                                     </div>
                                 </spring:bind>

@@ -55,9 +55,16 @@ public class AdminController {
         return "redirect:/main";
     }
 
-    //Product
+    //--Product
 
-    @GetMapping("/addProduct")
+    @GetMapping("/checkProducts")
+    public String checkProducts(Model model){
+        model.addAttribute("products", productService.getAll());
+        return "admin/checkProducts";
+    }
+
+
+    @GetMapping("/checkProducts/addProduct")
     public  String createProduct(Model model){
         model.addAttribute("product",new Product());
         model.addAttribute("supplies", supplyService.getAllSupply());
@@ -68,15 +75,43 @@ public class AdminController {
     public String addProduct(@ModelAttribute("product") Product product,BindingResult bindingResult, Model model){
         model.addAttribute("supplies",supplyService.getAllSupply()); //TODO:норма это или нет, но костыли еще никто не отменял
         productValidator.validate(product,bindingResult);
-
         if(bindingResult.hasErrors()){
 
             return "admin/createProduct";
         }
-
         productService.save(product);
-        return "redirect:/admin/addProduct";
+        return "redirect:/admin/checkProducts";
     }
+
+    //
+
+    @GetMapping("/checkProducts/update-{id}")
+    public String updateProducts(@PathVariable("id") int id, Model model){
+        model.addAttribute("product", productService.getProduct(id));
+        model.addAttribute("supplies", supplyService.getAllSupply());
+        return "admin/updateProduct";
+    }
+
+    @PostMapping("/updateProduct")
+    public String updateProducerComplete(@ModelAttribute("product")Product product, BindingResult bindingResult) {
+        productValidator.validate(product, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "admin/updateProduct";
+        }
+        productService.save(product);
+        return "redirect:/admin/checkProducts";
+    }
+
+    @GetMapping("/checkProducts/delete-{id}")
+    public String removeProduct(@PathVariable("id") int id){
+        productService.delete(id);
+        return "redirect:/admin/checkProducts";
+    }
+
+
+
+
+
 
     //--Producer
 

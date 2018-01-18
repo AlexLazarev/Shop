@@ -28,10 +28,6 @@ public class ProducerValidator implements Validator {
             errors.rejectValue("name", "producer.name.size");
         }
 
-        if (supplyService.findByName(producer.getName()) != null) {
-            errors.rejectValue("name", "producer.name.duplicate");
-        }
-
         //TODO: number is number
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "number", "required");
         if (    !producer.getNumber().matches("\\d{10,12}") &&

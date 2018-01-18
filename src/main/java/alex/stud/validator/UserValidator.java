@@ -32,7 +32,7 @@ public class UserValidator implements Validator {
             errors.rejectValue("username", "duplicate.userForm.username");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required");
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "size.userForm.password");
         }
@@ -43,11 +43,24 @@ public class UserValidator implements Validator {
 
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required");
-        if (user.getFirstName().length() < 6 || user.getFirstName().length() > 32) {
-            errors.rejectValue("firstName", "producer.name.size");
+        if (user.getFirstName().length() < 2 || user.getFirstName().length() > 32) {
+            errors.rejectValue("firstName", "user.name.size");
         }
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "required");
+        if (user.getlastName().length() < 2 || user.getlastName().length() > 32) {
+            errors.rejectValue("lastName", "user.name.size");
+        }
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "number", "required");
+        if (    !user.getNumber().matches("\\d{10,12}") &&
+                !user.getNumber().matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}")){
+            errors.rejectValue("number", "producer.number.NotNumber");
+        }
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");
+        if (    !user.getEmail().matches("\\w+\\@\\w+\\.[a-z]{2,3}")){
+            errors.rejectValue("email", "user.email.incorrect");
+        }
     }
 }

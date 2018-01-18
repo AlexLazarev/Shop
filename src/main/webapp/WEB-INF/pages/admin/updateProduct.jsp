@@ -20,15 +20,16 @@
             <div class="container">
                 <div class="register">
                     <div class="register-title text-center">
-                        <h4 class="bold-title">Добавление товара</h4>
+                        <h4 class="bold-title">Обновление товара</h4>
                     </div>
                     <div class="register-body">
                         <div class="register-body__info">
                             <p class="register-body__boldtext">Описание</p>
-                            <p class="register-body__text big-padding">Вы можете добавить товар с помощью данных полей</p>
+                            <p class="register-body__text big-padding">Вы можете  обновить товар с помощью данных полей</p>
                         </div>
                         <div class="register-body__form">
                             <form:form modelAttribute="product" method="post" action="/admin/addProduct">
+                                <form:hidden path="id" value="${product.id}"/>
 
                                 <spring:bind path="type">
                                     <div class="form-group">
@@ -98,7 +99,7 @@
                                     </div>
                                 </spring:bind>
 
-                                <input type="submit" value="Добавить товар">
+                                <input type="submit" value="Обновить товар">
                                 </form:form>
                         </div>
                     </div>
